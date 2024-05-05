@@ -38,10 +38,7 @@ namespace CosmicCrowGames.Components
             _spriteBatch.Draw(Texture, Entity.transform.Position, Color.White);
         }
         
-        // public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        // {
-
-        // }
+        
 
         public override void Initialize()
         {
@@ -50,9 +47,6 @@ namespace CosmicCrowGames.Components
 
         public override void Update(GameTime gameTime)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            Console.WriteLine("Running update for Sprite2D + {0}", gameTime.TotalGameTime.Seconds);
-            Entity.transform.Position += new Vector2(Entity.transform.Position.X + (100 * deltaTime), Entity.transform.Position.Y);
         }
     }
 }

@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
 using CosmicCrowGames.Components;
 using CosmicCrowGames.Foundation;
 
@@ -19,28 +18,29 @@ public class MainGame : Game
     {
         _graphics = new GraphicsDeviceManager(this) {
             PreferredBackBufferWidth = 1920,
-            PreferredBackBufferHeight = 1080
+            PreferredBackBufferHeight = 1080,
+            IsFullScreen = false
+        
         };
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;
-        
+        IsMouseVisible = true;        
     }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-
         base.Initialize();
         _gameManager = new GameManager();
-        
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         _entityManager = new EntityManager(_spriteBatch);
-        _entityManager.AddEntity(new GameObject().AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg"), _spriteBatch)));
-        // TODO: use this.Content to load your game content here
+        _entityManager.AddEntity(
+            new GameObject()
+            .AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg"), _spriteBatch))
+            .AddComponent(new MoveRight())
+            .AddProp(EntityProperty.Moveable));
     }
 
     protected override void Update(GameTime gameTime)
@@ -53,6 +53,8 @@ public class MainGame : Game
         
         base.Update(gameTime);
     }
+
+    
 
     protected override void Draw(GameTime gameTime)
     {

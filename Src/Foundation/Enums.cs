@@ -4,5 +4,6 @@ public enum EntityProperty
 {
     None,
     Destructable,
-    Destroyed
+    Destroyed,
+    Moveable
 }

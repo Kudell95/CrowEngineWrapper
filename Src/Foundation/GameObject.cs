@@ -13,7 +13,10 @@ namespace CosmicCrowGames.Foundation
         public override void Initialize()
         {
             base.Initialize();
+
         }
+
+
 
         public override void Draw(GameTime gameTime,SpriteBatch spriteBatch)
         {
