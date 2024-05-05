@@ -1,6 +1,5 @@
 using System;
-using CosmicCrowGames.Components;
-using CosmicCrowGames.Foundation;
+using CosmicCrowGames.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -17,17 +16,10 @@ namespace CosmicCrowGames.Components
         public Sprite2D(Texture2D texture) : base()
         {
             Texture = texture;    
-        }       
-        
-        public Sprite2D(Texture2D texture, SpriteBatch spriteBatch) : base()
-        {
-            _spriteBatch = spriteBatch;
-            Texture = texture;    
-        }
+        }               
 
-        public Sprite2D(Texture2D texture, SpriteBatch spriteBatch, int layer) : base()
+        public Sprite2D(Texture2D texture, int layer) : base()
         {
-            _spriteBatch = spriteBatch;
             Texture = texture;    
             layerDepth = layer;
         }
@@ -43,7 +35,11 @@ namespace CosmicCrowGames.Components
 
         public override void Draw(GameTime gameTime)
         {
-            _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
+            //TODO: perhaps instead of using _spriteBatch here, we could instead create a renderer component.
+            //as it would be nice to have seperate renderers for different types of entities. and also be able to control scaling modes etc... for each individual sprite.
+            // _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
+
+            Entity.TryGetComponent<Renderer2D>().RenderItem(Texture, Entity.transform.Position, layerDepth);
         }
         
         
@@ -51,6 +47,9 @@ namespace CosmicCrowGames.Components
         public override void Initialize()
         {
             // throw new System.NotImplementedException();
+
+            if(!Entity.HasComponent<Renderer2D>())
+                Console.WriteLine("WARNING: Entity does not have a Renderer2D component");
         }
 
         public override void Update(GameTime gameTime)

@@ -1,9 +1,9 @@
-using CosmicCrowGames.Foundation;
+using CosmicCrowGames.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace CosmicCrowGames.Components
+namespace CosmicCrowGames.Core
 {
 
     /// <summary>
@@ -18,14 +18,7 @@ namespace CosmicCrowGames.Components
         {
             Entity = entity;
         }
-
-        public Component(Entity entity, SpriteBatch spriteBatch)
-        {
-            Entity = entity;
-            _spriteBatch = spriteBatch;
-        }
         
-        protected SpriteBatch _spriteBatch;
 
         public Entity Entity { get; set; }
 

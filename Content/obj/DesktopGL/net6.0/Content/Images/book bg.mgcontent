@@ -3,7 +3,7 @@
   <SourceFile>F:/Dev/Monogame/Projects/UntitledCardGame/Content/Images/book bg.png</SourceFile>
   <SourceTime>2024-04-14T10:02:46.322131+10:00</SourceTime>
   <DestFile>F:/Dev/Monogame/Projects/UntitledCardGame/Content/bin/DesktopGL/Content/Images/book bg.xnb</DestFile>
-  <DestTime>2024-05-05T16:46:23.7987288+10:00</DestTime>
+  <DestTime>2024-05-05T22:22:39.9566581+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T21:44:56+10:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
@@ -18,7 +18,7 @@
   </Parameters>
   <Parameters>
     <Key>GenerateMipmaps</Key>
-    <Value>False</Value>
+    <Value>True</Value>
   </Parameters>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
@@ -34,7 +34,7 @@
   </Parameters>
   <Parameters>
     <Key>TextureFormat</Key>
-    <Value>Color</Value>
+    <Value>NoChange</Value>
   </Parameters>
   <Dependencies />
   <BuildAsset />

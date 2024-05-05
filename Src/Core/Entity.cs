@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CosmicCrowGames.Components;
 using System;
-using CosmicCrowGames.Foundation.Transform;
+using CosmicCrowGames.Core.Transform;
 
-namespace CosmicCrowGames.Foundation;
+namespace CosmicCrowGames.Core;
 
 
 //TODO: parent/child behaviours.
@@ -57,10 +57,6 @@ public abstract class Entity
         onUpdate?.Invoke(gameTime);
     }
     public virtual void Draw(GameTime gameTime){
-        onDraw?.Invoke(gameTime);
-    }
-    public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-    {
         onDraw?.Invoke(gameTime);
     }
 

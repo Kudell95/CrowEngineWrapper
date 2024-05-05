@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CosmicCrowGames.Components;
-using CosmicCrowGames.Foundation;
+using CosmicCrowGames.Core;
 using System;
 
 namespace UntitledCardGame;
@@ -53,29 +53,18 @@ public class MainGame : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
         Console.WriteLine("Loading content");
         //This has to be created first.
 
 
         //Would be nice if the GameObjects could try and register themselves, to make it easier. Maybe could just use an entity factory. or just have a singleton for the entity manager and set it up in the constructor. Or a static event???
         Entity gm1 = new GameObject(Vector2.Zero)
-            .AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg"), _spriteBatch))
-            .AddComponent(new SimpleMovementController())
-            .AddProp(EntityProperty.Moveable);
+            .AddComponent(new Renderer2D(_spriteBatch))
+            .AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg")));
 
-        // gm1.SetScale(new Vector2(2.8f,2));  
+        gm1.SetScale(new Vector2(2.8f,2));  
 
         gm1.SetPosition(new Vector2(0, Window.ClientBounds.Height - gm1.GetComponent<Sprite2D>().Texture.Height * gm1.transform.Scale.Y)); 
-
-
-        Entity gm2 = new GameObject(new Vector2(0,50))
-        .AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg"), _spriteBatch))
-        .AddComponent(new ParentTester())
-        .SetParent(gm1);
-
-
-
 
 
         _spriteFont = Content.Load<SpriteFont>("Fonts/Consolas");
@@ -97,12 +86,9 @@ public class MainGame : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin();
+
+
         _entityManager.Draw(gameTime);
-        _spriteBatch.End();
-
-
-
 
     ///DEBUG-------------------------------------------
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;

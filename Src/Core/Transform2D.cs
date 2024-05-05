@@ -1,6 +1,6 @@
 
 
-namespace CosmicCrowGames.Foundation.Transform
+namespace CosmicCrowGames.Core.Transform
 {
 
      using Microsoft.Xna.Framework;

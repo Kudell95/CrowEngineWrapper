@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using CosmicCrowGames.Core;
 
 namespace CosmicCrowGames.Components{
 
@@ -23,11 +24,11 @@ namespace CosmicCrowGames.Components{
 
            if(Entity.HasProp(EntityProperty.Moveable) && Keyboard.GetState().IsKeyDown(Keys.Right))
            {
-               Entity.SetPosition(new Vector2(Entity.transform.Position.X + 100 * deltaTime, Entity.transform.Position.Y));
+               Entity.SetPosition(new Vector2(Entity.transform.Position.X + 400 * deltaTime, Entity.transform.Position.Y));
            }
            else if(Entity.HasProp(EntityProperty.Moveable) && Keyboard.GetState().IsKeyDown(Keys.Left))
            {
-               Entity.SetPosition(new Vector2(Entity.transform.Position.X - 100 * deltaTime, Entity.transform.Position.Y));
+               Entity.SetPosition(new Vector2(Entity.transform.Position.X - 400 * deltaTime, Entity.transform.Position.Y));
            }
         }
     }

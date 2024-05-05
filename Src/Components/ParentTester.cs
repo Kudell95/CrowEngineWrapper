@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using CosmicCrowGames.Core;
 
 namespace CosmicCrowGames.Components{
 

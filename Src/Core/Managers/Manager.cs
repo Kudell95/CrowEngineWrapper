@@ -1,6 +1,6 @@
 
 
-namespace CosmicCrowGames.Foundation
+namespace CosmicCrowGames.Core
 {
     public abstract class Manager
     {

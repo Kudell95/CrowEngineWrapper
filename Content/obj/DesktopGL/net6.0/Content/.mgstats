@@ -1,3 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "F:/Dev/Monogame/Projects/UntitledCardGame/Content/Fonts/Consolas.spritefont","F:/Dev/Monogame/Projects/UntitledCardGame/Content/bin/DesktopGL/Content/Fonts/Consolas.xnb","FontDescriptionProcessor","SpriteFontContent",2501,21994,0.2067636
-"F:/Dev/Monogame/Projects/UntitledCardGame/Content/Images/book bg.png","F:/Dev/Monogame/Projects/UntitledCardGame/Content/bin/DesktopGL/Content/Images/book bg.xnb","TextureProcessor","Texture2DContent",2152,299605,0.1408054
+"F:/Dev/Monogame/Projects/UntitledCardGame/Content/Images/book bg.png","F:/Dev/Monogame/Projects/UntitledCardGame/Content/bin/DesktopGL/Content/Images/book bg.xnb","TextureProcessor","Texture2DContent",2152,399101,0.1419027
