@@ -1,0 +1,39 @@
+using CosmicCrowGames.Foundation;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+
+namespace CosmicCrowGames.Components
+{
+
+    /// <summary>
+    /// Base class for all components
+    /// </summary>
+    public abstract class Component
+    {
+        public Component(){
+            
+        }
+        public Component(Entity entity)
+        {
+            Entity = entity;
+        }
+
+        public Component(Entity entity, SpriteBatch spriteBatch)
+        {
+            Entity = entity;
+            _spriteBatch = spriteBatch;
+        }
+        
+        protected SpriteBatch _spriteBatch;
+
+        public Entity Entity { get; set; }
+
+        public abstract void Initialize();
+
+        public abstract void Update(GameTime gameTime);
+        
+        public abstract void Draw(GameTime gameTime);
+    }
+
+}
