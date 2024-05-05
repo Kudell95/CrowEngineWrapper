@@ -4,9 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>F:/Dev/Monogame/Projects/UntitledCardGame/Content/Fonts/Consolas.spritefont</File>
     <File>F:/Dev/Monogame/Projects/UntitledCardGame/Content/Images/book bg.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -10,18 +10,26 @@ namespace CosmicCrowGames.Components
     {
         public Texture2D Texture;
 
-        public Sprite2D() : base(){
+        public int layerDepth = 0;
 
-        }
+        public Sprite2D() : base(){}
 
         public Sprite2D(Texture2D texture) : base()
         {
             Texture = texture;    
         }       
+        
         public Sprite2D(Texture2D texture, SpriteBatch spriteBatch) : base()
         {
             _spriteBatch = spriteBatch;
             Texture = texture;    
+        }
+
+        public Sprite2D(Texture2D texture, SpriteBatch spriteBatch, int layer) : base()
+        {
+            _spriteBatch = spriteBatch;
+            Texture = texture;    
+            layerDepth = layer;
         }
 
         public Sprite2D(Texture2D texture, Entity entity) : base(entity)
@@ -35,7 +43,7 @@ namespace CosmicCrowGames.Components
 
         public override void Draw(GameTime gameTime)
         {
-            _spriteBatch.Draw(Texture, Entity.transform.Position, Color.White);
+            _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
         }
         
         

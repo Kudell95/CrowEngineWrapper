@@ -27,22 +27,32 @@ namespace CosmicCrowGames.Foundation
         public EntityManager (SpriteBatch spriteBatch)
         {
             _spriteBatch = spriteBatch;
+
+            Entity.onEntityCreated += OnEntityCreated;
         }
+
+        private void OnEntityCreated(Entity entity)
+        {
+            AddEntity(entity);
+        }
+
         public EntityManager (SpriteBatch spriteBatch, List<Entity> entities)
         {
             _spriteBatch = spriteBatch;
             entities = _entities;
             foreach(var entity in entities)
             {
-                onInitialise += entity.Initialize;
+                // onInitialise += entity.Initialize;
                 onUpdate += entity.Update;
                 onDraw += entity.Draw;
+
+                entity.Initialize();
             }
         }
 
         public EntityManager AddEntity(Entity entity){
             _entities.Add(entity);
-            onInitialise += entity.Initialize;
+            entity.Initialize();
             onUpdate += entity.Update;
             onDraw += entity.Draw;
             return this;
@@ -67,7 +77,9 @@ namespace CosmicCrowGames.Foundation
 
         public override void Initialize()
         {
-           onInitialise?.Invoke();
+            
+
+
         }
 
 
@@ -90,6 +102,9 @@ namespace CosmicCrowGames.Foundation
                 onDraw -= entity.Draw;
                 entity.Destroy();
             }
+
+
+            Entity.onEntityCreated -= OnEntityCreated;
         }
     }
 

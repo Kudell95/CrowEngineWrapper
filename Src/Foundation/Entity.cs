@@ -1,12 +1,11 @@
 
 
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended;
 using CosmicCrowGames.Components;
 using System;
+using CosmicCrowGames.Foundation.Transform;
 
 namespace CosmicCrowGames.Foundation;
 
@@ -22,7 +21,9 @@ public abstract class Entity
     
     public bool IsDestroyed { get; private set; }
 
-    public Transform2 transform;
+    //TODO: probably switch to something like so for the transform : https://github.com/dotnet-ad/Transform/blob/master/src/Transform/Transform2D.cs
+    //Current transform has no support for child/parents. - or implement own transform.
+    public Transform2D transform;
 
     private List<Component> _components = new List<Component>();
 
@@ -30,12 +31,22 @@ public abstract class Entity
     private Action<GameTime> onDraw;
     private Action<GameTime> onUpdate;
 
+    public static Action<Entity> onEntityCreated;
+
       
     protected Entity()
     {
         IsDestroyed = false;
+        transform = new Transform2D();
 
-        transform = new Transform2();
+        onEntityCreated?.Invoke(this);
+    }
+
+    protected Entity(Vector2 position){
+        IsDestroyed = false;
+        transform = new Transform2D();
+        transform.Position = position;
+        onEntityCreated?.Invoke(this);
     }
 
     public virtual void Initialize(){
@@ -165,6 +176,39 @@ public abstract class Entity
         return default;
     }
 
+    public Entity SetParent(Entity parent)
+    {
+        if(parent == null)
+            return this;
+
+        transform.Parent = parent.transform;
+        return this;
+    }
+
+
+    public Entity ClearParent()
+    {
+        transform.Parent = null;
+        return this;
+    }
+
+    
+    public Entity SetPosition(Vector2 position)
+    {
+        transform.Position = position;
+        return this;
+    }
+
+    public Entity SetRotation(float rotation)
+    {
+        transform.Rotation = rotation;
+        return this;
+    }
+
+    public Entity SetScale(Vector2 scale)
+    {
+        transform.Scale = scale;
+        return this;
+    }
+
 }
-
-

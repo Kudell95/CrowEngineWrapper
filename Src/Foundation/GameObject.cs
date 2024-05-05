@@ -1,8 +1,6 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using CosmicCrowGames.Foundation;
-using CosmicCrowGames.Components;
 
 
 namespace CosmicCrowGames.Foundation
@@ -14,6 +12,10 @@ namespace CosmicCrowGames.Foundation
         {
             base.Initialize();
 
+        }
+
+        public GameObject(Vector2 position) : base(position){
+            
         }
 
 
