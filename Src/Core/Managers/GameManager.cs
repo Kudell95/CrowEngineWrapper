@@ -6,7 +6,6 @@ namespace CosmicCrowGames.Core
     {
         public static GameManager Instance { get; private set;}    
 
-        
 
         public GameManager() 
         { 

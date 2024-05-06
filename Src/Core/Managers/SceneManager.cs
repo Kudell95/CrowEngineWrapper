@@ -1,5 +1,7 @@
 
 
+using System.Collections.Generic;
+
 namespace CosmicCrowGames.Core.Scenes
 {
     //Scene Manager ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
@@ -17,6 +19,45 @@ namespace CosmicCrowGames.Core.Scenes
 
     public class SceneManager
     {
+        private Dictionary<SceneType, Scene> _scenes = new Dictionary<SceneType, Scene>();
 
+        public Scene CurrentScene {get; private set;}
+
+
+        public SceneManager AddScene(Scene scene, SceneType sceneType){
+            if(_scenes.ContainsKey(sceneType))
+                return this;
+            
+            _scenes.Add(sceneType, scene);
+            return this;
+        }
+
+        public bool HasScene(SceneType sceneType){
+            return _scenes.ContainsKey(sceneType);
+        }
+
+        public bool RemoveScene(SceneType sceneType){
+            if(!_scenes.ContainsKey(sceneType))
+                return false;
+            
+            _scenes.Remove(sceneType);
+            return true;
+        }
+
+        public void LoadScene(SceneType sceneType)
+        {
+            if(!_scenes.ContainsKey(sceneType))
+                return;
+
+            if(CurrentScene != null)
+                CurrentScene.OnSceneUnloaded(); // may need to await for this... or listen for event.
+            
+            CurrentScene = _scenes[sceneType];
+
+            CurrentScene.OnSceneLoaded();
+
+            // unload current scene.
+            //
+        }
     }
 }

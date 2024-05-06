@@ -3,9 +3,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using CosmicCrowGames.Core;
+using CosmicCrowGames.Components;
 using System.Collections.ObjectModel;
 
-namespace CosmicCrowGames.Components{
+namespace UntitledCardGame.Components{
 
     public class SimpleMovementController : Component
     {

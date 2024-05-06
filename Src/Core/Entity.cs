@@ -2,15 +2,11 @@
 
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using CosmicCrowGames.Components;
 using System;
 using CosmicCrowGames.Core.Transform;
 
 namespace CosmicCrowGames.Core;
 
-
-//TODO: parent/child behaviours.
 
 /// <summary>
 /// Base class for all entities
