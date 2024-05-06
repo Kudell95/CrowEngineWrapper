@@ -263,9 +263,12 @@ public abstract class Entity
                 onDraw -= component.Draw;
                 onUpdate -= component.Update;
                 onInitialise -= component.Initialize;
+
+                component.Destroy();
             }
         }
         catch{}
+        Active = false;
     }
 
 }

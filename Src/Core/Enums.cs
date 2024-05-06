@@ -13,5 +13,6 @@ public enum EntityProperty
 public enum SceneType
 {
     MainMenu,
+    GameScene
 
 }

@@ -10,7 +10,7 @@ namespace CosmicCrowGames.Core
     /// <summary>
     /// Base class for all components
     /// </summary>
-    public abstract class Component
+    public abstract class Component : IDisposable
     {
         private bool _enabled = true;
 
@@ -51,6 +51,19 @@ namespace CosmicCrowGames.Core
         public abstract void Update(GameTime gameTime);
         
         public abstract void Draw(GameTime gameTime);
+
+        public virtual void Destroy()
+        {
+            Enabled = false;
+            Dispose();
+        }
+
+        //TODO: not sure if this needs more fleshing out.
+        public virtual void Dispose()
+        {
+            Entity.RemoveComponent(this);
+            Entity = null;            
+        }
     }
 
 }

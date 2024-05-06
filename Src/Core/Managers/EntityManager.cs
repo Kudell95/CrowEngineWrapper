@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CosmicCrowGames.Core
 {
-    public class EntityManager : Manager
+    public class EntityManager : Manager, IDisposable
     {
         private SpriteBatch _spriteBatch;
         private Action<GameTime> onUpdate;
@@ -100,6 +100,14 @@ namespace CosmicCrowGames.Core
 
 
             Entity.onEntityCreated -= OnEntityCreated;
+
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            _spriteBatch = null;
+            _entities = null;
         }
     }
 

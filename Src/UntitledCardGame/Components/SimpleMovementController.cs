@@ -3,7 +3,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using CosmicCrowGames.Core;
-using CosmicCrowGames.Components;
+using CosmicCrowGames.Core.Components;
 using System.Collections.ObjectModel;
 
 namespace UntitledCardGame.Components{
@@ -51,6 +51,11 @@ namespace UntitledCardGame.Components{
 
             if(keyPressed && !Keyboard.GetState().IsKeyUp(Keys.L) && timer > cooldown)
                 keyPressed = false;
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
         }
     }
 }

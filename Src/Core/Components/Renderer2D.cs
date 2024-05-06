@@ -42,5 +42,11 @@ namespace CosmicCrowGames.Core.Components
             _spriteBatch.Draw(texture, Entity.transform.Position,rectangle, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
             _spriteBatch.End();
         }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            // throw new System.NotImplementedException();
+        }
     }
 }

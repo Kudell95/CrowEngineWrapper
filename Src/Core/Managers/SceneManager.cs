@@ -1,6 +1,9 @@
 
 
+using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CosmicCrowGames.Core.Scenes
 {
@@ -23,6 +26,18 @@ namespace CosmicCrowGames.Core.Scenes
 
         public Scene CurrentScene {get; private set;}
 
+        public static Action<GameTime> OnDraw;
+        public static Action<GameTime> OnUpdate;
+
+
+        public void Update(GameTime gameTime){
+            CurrentScene?.Update(gameTime);
+        }
+
+        public void Draw(GameTime gameTime){
+            CurrentScene?.Draw(gameTime);
+        }
+
 
         public SceneManager AddScene(Scene scene, SceneType sceneType){
             if(_scenes.ContainsKey(sceneType))
@@ -43,6 +58,14 @@ namespace CosmicCrowGames.Core.Scenes
             _scenes.Remove(sceneType);
             return true;
         }
+
+        public SceneManager AddScenes(Dictionary<SceneType, Scene> scenes)
+        {
+            _scenes = scenes;
+
+            return this;
+        }
+
 
         public void LoadScene(SceneType sceneType)
         {

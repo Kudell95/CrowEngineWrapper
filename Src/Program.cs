@@ -1,5 +1,5 @@
 ﻿
 using UntitledCardGame;
 
-using var game = new MainGame();
+using var game = new GameWrapper();
 game.Run();

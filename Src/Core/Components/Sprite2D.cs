@@ -61,6 +61,12 @@ namespace CosmicCrowGames.Core.Components
         public override void Update(GameTime gameTime)
         {
         }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            // throw new NotImplementedException();
+        }
     }
 }
 
