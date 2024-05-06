@@ -7,8 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CosmicCrowGames.Core
 {
-
-
     public class EntityManager : Manager
     {
         private SpriteBatch _spriteBatch;
@@ -18,12 +16,9 @@ namespace CosmicCrowGames.Core
 
         private List<Entity> _entities = new List<Entity>();
 
-
         public EntityManager(){
 
         }
-
-
         public EntityManager (SpriteBatch spriteBatch)
         {
             _spriteBatch = spriteBatch;

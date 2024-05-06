@@ -60,12 +60,13 @@ public class MainGame : Game
         //Would be nice if the GameObjects could try and register themselves, to make it easier. Maybe could just use an entity factory. or just have a singleton for the entity manager and set it up in the constructor. Or a static event???
         Entity gm1 = new GameObject(Vector2.Zero)
             .AddComponent(new Renderer2D(_spriteBatch))
-            .AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg")));
+            .AddComponent(new Sprite2D(Content.Load<Texture2D>("Images/book bg"),1));
 
         gm1.SetScale(new Vector2(2.8f,2));  
-
         gm1.SetPosition(new Vector2(0, Window.ClientBounds.Height - gm1.GetComponent<Sprite2D>().Texture.Height * gm1.transform.Scale.Y)); 
 
+        Console.WriteLine(gm1.ID);
+        Console.WriteLine(gm1.Name);
 
         _spriteFont = Content.Load<SpriteFont>("Fonts/Consolas");
     }

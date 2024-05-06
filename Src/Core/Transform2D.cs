@@ -102,6 +102,8 @@ namespace CosmicCrowGames.Core.Transform
             }
         }
 
+
+        //FIXME: positions aren't relative to parents, need to find cause.
         /// <summary>
         /// Gets or sets the position (relative to the parent, absolute if no parent).
         /// </summary>

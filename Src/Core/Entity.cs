@@ -17,46 +17,70 @@ namespace CosmicCrowGames.Core;
 /// </summary>
 public abstract class Entity
 {
+    #region  Private Variables
     private List<EntityProperty> _properties = new List<EntityProperty>();
-    
-    public bool IsDestroyed { get; private set; }
-
-    //TODO: probably switch to something like so for the transform : https://github.com/dotnet-ad/Transform/blob/master/src/Transform/Transform2D.cs
-    //Current transform has no support for child/parents. - or implement own transform.
-    public Transform2D transform;
-
     private List<Component> _components = new List<Component>();
-
     private Action onInitialise;
     private Action<GameTime> onDraw;
     private Action<GameTime> onUpdate;
-
     public static Action<Entity> onEntityCreated;
+    private bool _active = true;
+    private Guid _id;
+    private string _name;
+    #endregion
 
+    #region  Properties
+    public bool Active {
+        get { return _active; }
+        set { _active = value;}        
+    }
+
+    public Transform2D transform;
+    public bool IsDestroyed { get; private set; }
+
+
+    public string ID {
+        get { return _id.ToString(); }
+    }
+
+    public string Name
+    {
+        get { return _name; }
+        set { _name = value; }
+    }
+
+    #endregion
       
     protected Entity()
     {
         IsDestroyed = false;
         transform = new Transform2D();
-
+        _id = Guid.NewGuid();
         onEntityCreated?.Invoke(this);
+        Name = this.GetType().Name;
     }
 
-    protected Entity(Vector2 position){
-        IsDestroyed = false;
-        transform = new Transform2D();
+    protected Entity(Vector2 position) : this()
+    {
         transform.Position = position;
-        onEntityCreated?.Invoke(this);
     }
 
     public virtual void Initialize(){
+        if(!Active)
+            return;
+
         onInitialise?.Invoke();
     }
     public virtual void Update(GameTime gameTime)
     {
+        if(!Active)
+            return;
+
         onUpdate?.Invoke(gameTime);
     }
     public virtual void Draw(GameTime gameTime){
+        if(!Active)
+            return;
         onDraw?.Invoke(gameTime);
     }
 
@@ -109,12 +133,37 @@ public abstract class Entity
         _components.Add(component);
 
         onInitialise += component.Initialize;
-
         onUpdate += component.Update;
-
         onDraw += component.Draw;
 
+
+        component.OnDisabled += OnComponentDisabled;
+        component.OnEnabled += OnComponentEnabled;
+
         return this;
+    }
+
+
+    public void OnComponentEnabled(Component component)
+    {
+        //Unsubscribe here to ensure we are only listening once.
+        try{
+            onInitialise -= component.Initialize;
+            onUpdate -= component.Update;
+            onDraw -= component.Draw;
+            onInitialise += component.Initialize;
+            onUpdate += component.Update;
+            onDraw += component.Draw;
+        }catch{}
+    }
+
+    public void OnComponentDisabled(Component component)
+    {
+        try{
+            onInitialise -= component.Initialize;
+            onUpdate -= component.Update;
+            onDraw -= component.Draw;
+        }catch{}
     }
 
 
@@ -205,6 +254,22 @@ public abstract class Entity
     {
         transform.Scale = scale;
         return this;
+    }
+
+    public virtual void OnDestroy()
+    {
+        //unsubscribe from events.
+        try{
+            foreach(var component in _components)
+            {
+                component.OnDisabled -= OnComponentDisabled;
+                component.OnEnabled -= OnComponentEnabled;
+                onDraw -= component.Draw;
+                onUpdate -= component.Update;
+                onInitialise -= component.Initialize;
+            }
+        }
+        catch{}
     }
 
 }

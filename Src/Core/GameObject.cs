@@ -7,10 +7,13 @@ namespace CosmicCrowGames.Core
 {
     public class GameObject : Entity
     {
-
         public override void Initialize()
         {
             base.Initialize();
+        }
+
+        public GameObject() : base()
+        {
 
         }
 
