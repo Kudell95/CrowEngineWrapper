@@ -73,7 +73,9 @@ namespace CosmicCrowGames.Core.Scenes
                 return;
 
             if(CurrentScene != null)
+            {
                 CurrentScene.OnSceneUnloaded(); // may need to await for this... or listen for event.
+            }
             
             CurrentScene = _scenes[sceneType];
 

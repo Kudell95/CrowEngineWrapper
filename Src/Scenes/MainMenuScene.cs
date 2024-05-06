@@ -37,14 +37,15 @@ namespace UntitledCardGame.Scenes
         }
 
         public override void OnSceneUnloaded()
-        {
+        {            
+            base.OnSceneUnloaded();
             //unload content
         }
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
             GraphicsDevice.Clear(Color.SkyBlue);
+            base.Update(gameTime);
         }
 
     }

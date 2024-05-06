@@ -27,7 +27,12 @@ namespace CosmicCrowGames.Core.Scenes
 
 
         public abstract void OnSceneLoaded();
-        public abstract void OnSceneUnloaded();
+        public virtual void OnSceneUnloaded()
+        {
+            EntityManager.OnDestroy();
+            EntityManager.Dispose();
+            EntityManager = null;
+        }
 
 
         public abstract void Initialize();
