@@ -36,12 +36,8 @@ namespace CosmicCrowGames.Core.Scenes
 
 
         public abstract void Initialize();
-        public virtual void Update(GameTime gameTime){
-            EntityManager.Update(gameTime);
-        }
-        public virtual void Draw(GameTime gameTime){
-            EntityManager.Draw(gameTime);
-        }
+        public abstract void Update(GameTime gameTime);
+        public abstract void Draw(GameTime gameTime);
 
 
     }

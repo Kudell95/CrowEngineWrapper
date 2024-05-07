@@ -18,7 +18,6 @@ namespace UntitledCardGame.Scenes
 
         public override void Draw(GameTime gameTime)
         {
-           base.Draw(gameTime);
         }
 
         public override void Initialize()
@@ -45,7 +44,6 @@ namespace UntitledCardGame.Scenes
         public override void Update(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.SkyBlue);
-            base.Update(gameTime);
         }
 
     }

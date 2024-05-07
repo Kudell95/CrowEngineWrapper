@@ -32,10 +32,12 @@ namespace CosmicCrowGames.Core.Scenes
 
         public void Update(GameTime gameTime){
             CurrentScene?.Update(gameTime);
+            CurrentScene?.EntityManager?.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime){
             CurrentScene?.Draw(gameTime);
+            CurrentScene?.EntityManager?.Draw(gameTime);
         }
 
 
