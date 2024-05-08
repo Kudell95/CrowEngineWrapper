@@ -1,4 +1,4 @@
-# UntitledCardGame
+# Crow Engine Wrapper
  
 This is a project i created to learn monogame, It's a (fairly undercooked) engine wrapper for Monogame.
 has a functioning ECS, basic renderer and basic scene system.
