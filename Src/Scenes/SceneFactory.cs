@@ -19,7 +19,6 @@ namespace UntitledCardGame.Scenes
         }
 
 
-        //TODO: update with more scenes
         public static Dictionary<SceneType, Scene> CreateScenes(GraphicsDevice graphicsDevice){
             Dictionary<SceneType,Scene> scenes = new Dictionary<SceneType, Scene>
             {

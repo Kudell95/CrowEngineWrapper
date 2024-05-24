@@ -12,6 +12,7 @@ namespace CosmicCrowGames.Core.Scenes
         public EntityManager EntityManager;
         public GraphicsDevice GraphicsDevice;
 
+
         private Guid _id;
         public string ID {get { return _id.ToString(); } }
 
@@ -38,6 +39,13 @@ namespace CosmicCrowGames.Core.Scenes
         public abstract void Initialize();
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
+
+        public Entity Instantiate(Entity entity)
+        {
+            EntityManager.AddEntity(entity);
+
+            return entity;
+        }
 
 
     }

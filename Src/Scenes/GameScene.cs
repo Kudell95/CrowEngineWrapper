@@ -26,7 +26,7 @@ namespace UntitledCardGame.Scenes
         public override void OnSceneLoaded()
         {
             // throw new System.NotImplementedException();
-             var gm1 = new GameObject(Vector2.Zero)
+             var gm1 = Instantiate(new GameObject(Vector2.Zero))
             .AddComponent(new Renderer2D(SpriteBatch))
             .AddComponent(new Sprite2D(GameWrapper.main.Content.Load<Texture2D>("Images/book bg")))
             .AddProp(EntityProperty.Background);

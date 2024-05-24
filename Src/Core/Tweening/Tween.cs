@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 
 namespace CosmicCrowGames.Core.Tweening
 {
-    //TODO: add support for more types. sprite color, etc.
     public abstract class Tween
     {
         protected float duration;
@@ -115,6 +114,11 @@ namespace CosmicCrowGames.Core.Tweening
             return 1 - (float)Math.Sqrt(1 - Math.Pow(t, 2));
         }
 
+        public static float EaseInOutCirc(float t){
+            return t < 0.5
+            ? (1 - (float)Math.Sqrt(1 - Math.Pow(2 * t, 2))) / 2
+            : (1 + (float)Math.Sqrt(1 - Math.Pow(-2 * t + 2, 2))) / 2;
+        }
         public static float EaseInOutCubic(float t){
             if(t < 0.5)
                 return 4 * t * t * t;
@@ -156,6 +160,13 @@ namespace CosmicCrowGames.Core.Tweening
         public static float EaseInOutQuad(float t) => t < 0.5f ? 2 * t * t : 1 - (float)Math.Pow(-2 * t + 2, 2) / 2;
 
         public static float EaseOutQuint(float t) => 1 - (float)Math.Pow(1-t,5);
+
+        public static float EaseInSine(float t) => 1 - (float)Math.Cos((t * Math.PI) / 2);
+
+        public static float EaseOutSine(float t) => (float)Math.Sin((t * Math.PI) / 2);
+
+        public static float EaseInOutSine(float t) => -(float)Math.Cos(Math.PI * t) / 2 + 0.5f;
+        
 
     }
 }

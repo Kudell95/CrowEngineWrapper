@@ -52,7 +52,7 @@ public abstract class Entity
         IsDestroyed = false;
         transform = new Transform2D();
         _id = Guid.NewGuid();
-        onEntityCreated?.Invoke(this);
+        // onEntityCreated?.Invoke(this);
         Name = this.GetType().Name;
     }
 

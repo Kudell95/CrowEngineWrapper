@@ -53,7 +53,7 @@ public class GameWrapper : Game
         // this.Window.AllowUserResizing = true;
         // this.Window.ClientSizeChanged += Window_ClientSizeChanged;
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;        
+        IsMouseVisible = true;
         
 
 

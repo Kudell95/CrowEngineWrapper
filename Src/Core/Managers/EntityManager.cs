@@ -7,6 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CosmicCrowGames.Core
 {
+    //TODO: add support for global entities, that exist outside of the current scene.
+    //maybe just pass a global flag in with the event when we create a new entitiy. and if the entity manager is flagged as global it will pick it up. Will multiple entity managers cause problems though??
+    //Other option is to just add a way to manually add an entity to the entity manager.
+
+    //Could just have GUIDS for the entity MGR - if we want additively loaded guids
+
     public class EntityManager : Manager, IDisposable
     {
         private SpriteBatch _spriteBatch;
@@ -16,7 +22,8 @@ namespace CosmicCrowGames.Core
 
         private List<Entity> _entities = new List<Entity>();
 
-        public EntityManager(){
+        public EntityManager()
+        {
 
         }
         public EntityManager (SpriteBatch spriteBatch)
