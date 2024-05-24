@@ -6,7 +6,7 @@
         "type": "process",
         "args": [
                 "build",
-                "${workspaceFolder}/UntitledCardGame.csproj"
+                "${workspaceFolder}/CrowEngine.csproj"
             ],
         "problemMatcher": "$msCompile"
     },
@@ -17,7 +17,7 @@
         "args": [
                 "run",
                 "--project",
-                "${workspaceFolder}/UntitledCardGame.csproj"
+                "${workspaceFolder}/CrowEngine.csproj"
             ],
         "problemMatcher": "$msCompile"
     }]

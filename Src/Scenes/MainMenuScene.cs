@@ -1,7 +1,9 @@
 
+using System;
 using CosmicCrowGames.Core;
 using CosmicCrowGames.Core.Components;
 using CosmicCrowGames.Core.Scenes;
+using CosmicCrowGames.Core.Tweening;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using UntitledCardGame.Components;
@@ -33,6 +35,11 @@ namespace UntitledCardGame.Scenes
             .AddComponent(new Renderer2D(SpriteBatch))
             .AddComponent(new Sprite2D(GameWrapper.main.Content.Load<Texture2D>("Images/Book bg")))
             .AddComponent(new SceneSwitcher());
+
+            gm1.TweenTo(new Vector2(500,0), 1f, Easing.EaseInOutElastic).OnComplete(()=>{
+            //  gm1.TweenTo(new Vector2(0,0), 1f, Easing.EaseInOutBack);
+            });
+
         }
 
         public override void OnSceneUnloaded()

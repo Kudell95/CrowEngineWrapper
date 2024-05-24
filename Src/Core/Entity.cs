@@ -115,14 +115,14 @@ public abstract class Entity
     /// </summary>
     /// <param name="property"></param>
     /// <returns></returns>
-    public Entity RemoveProp(EntityProperty property)
+    public virtual Entity RemoveProp(EntityProperty property)
     {
         _properties.Remove(property);
         return this;
     }
 
     
-    public Entity AddComponent(Component component)
+    public virtual Entity AddComponent(Component component)
     {
         if(component.Entity == null)
             component.Entity = this;

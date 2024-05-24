@@ -8,6 +8,7 @@ using FmodForFoxes;
 using UntitledCardGame.Components;
 using CosmicCrowGames.Core.Scenes;
 using UntitledCardGame.Scenes;
+using CosmicCrowGames.Core.Tweening;
 
 namespace UntitledCardGame;
 
@@ -21,6 +22,7 @@ public class GameWrapper : Game
     
     public static GameWrapper main;
 
+    public Tweener Tweener;
 
     public SceneManager SceneManager { get; private set; }
 
@@ -30,6 +32,13 @@ public class GameWrapper : Game
         if(main == null)
             main = this;
 
+        if(Tweener.Instance == null)
+        {
+            Tweener.Instance = new Tweener();
+        }
+
+        Tweener = Tweener.Instance;
+        
         _graphics = new GraphicsDeviceManager(this)
         {
             PreferredBackBufferWidth = 1920,
@@ -74,6 +83,7 @@ public class GameWrapper : Game
         // _entityManager.Update(gameTime);
 
         SceneManager?.Update(gameTime);
+        Tweener.Instance?.Update(gameTime);
         
         base.Update(gameTime);
     }

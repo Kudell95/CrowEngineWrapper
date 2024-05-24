@@ -8,7 +8,7 @@
         "type": "coreclr",
         "request": "launch",
         "preLaunchTask": "BuildGame",
-        "program": "${workspaceFolder}/bin/Debug/net6.0/UntitledCardGame.dll",
+        "program": "${workspaceFolder}/bin/Debug/net6.0/CrowEngine.dll",
         "cwd": "${workspaceFolder}",
         "args": [],
         "console": "internalConsole",
