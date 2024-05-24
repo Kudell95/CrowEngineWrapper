@@ -35,9 +35,12 @@ namespace UntitledCardGame.Scenes
             .AddComponent(new Renderer2D(SpriteBatch))
             .AddComponent(new Sprite2D(GameWrapper.main.Content.Load<Texture2D>("Images/Book bg")))
             .AddComponent(new SceneSwitcher());
-
-            gm1.TweenTo(new Vector2(500,0), 1f, Easing.EaseInOutElastic).OnComplete(()=>{
-            //  gm1.TweenTo(new Vector2(0,0), 1f, Easing.EaseInOutBack);
+            DelayedCall.CreateDelayedCall(1f).OnComplete(()=>{
+                    gm1.TweenTo(new Vector2(500,0), 1f, Easing.EaseInOutBack).OnComplete(()=>{
+                        DelayedCall.CreateDelayedCall(1f).OnComplete(()=>{
+                            gm1.TweenTo(new Vector2(0,0), 1f, Easing.EaseInOutBack);
+                        });                      
+                });
             });
 
         }
