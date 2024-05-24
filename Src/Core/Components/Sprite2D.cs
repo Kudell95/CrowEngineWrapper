@@ -19,7 +19,7 @@ namespace CosmicCrowGames.Core.Components
 
         public Sprite2D(Texture2D texture) : base()
         {
-            Texture = texture;    
+            Texture = texture;
         }               
 
         public Sprite2D(Texture2D texture, int layer) : base()
@@ -31,6 +31,7 @@ namespace CosmicCrowGames.Core.Components
         public Sprite2D(Texture2D texture, Entity entity) : base(entity)
         {
             Texture = texture;
+            
         }
 
         public Sprite2D(Entity entity) : base(entity)

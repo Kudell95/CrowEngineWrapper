@@ -37,8 +37,8 @@ namespace UntitledCardGame.Scenes
             .AddComponent(new SceneSwitcher());
             DelayedCall.CreateDelayedCall(1f).OnComplete(()=>{
                     gm1.transform.TweenPosition(new Vector2(800,500), 1f, Easing.EaseInOutCubic,-1,RepeatType.PingPong);  
-                    gm1.transform.TweenScale(new Vector2(2,2),1f,Easing.EaseInOutQuad,-1,RepeatType.PingPong);
-                    gm1.transform.TweenRotation((float)(Math.PI / 2) ,1f,Easing.EaseInOutQuad,-1,RepeatType.PingPong);
+                    // gm1.transform.TweenScale(new Vector2(2,2),1f,Easing.EaseInOutQuad,-1,RepeatType.PingPong);
+                    gm1.transform.TweenRotation((float)(Math.PI / 2) ,1f,Easing.EaseInOutElastic,-1,RepeatType.PingPong);
             });
 
         }
