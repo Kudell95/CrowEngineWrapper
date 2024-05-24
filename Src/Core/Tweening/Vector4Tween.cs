@@ -49,7 +49,11 @@ namespace CosmicCrowGames.Core
         }
         else
         {
-            currentValue = new Vector4(MathHelper.Lerp(endValue.X, startValue.X, easeT), MathHelper.Lerp(endValue.Y, startValue.Y, easeT), MathHelper.Lerp(endValue.Z, startValue.Z, easeT), MathHelper.Lerp(endValue.W, startValue.W, easeT));
+            currentValue = new Vector4(
+                MathHelper.Lerp(endValue.X, startValue.X, easeT),
+                MathHelper.Lerp(endValue.Y, startValue.Y, easeT),
+                MathHelper.Lerp(endValue.Z, startValue.Z, easeT),
+                MathHelper.Lerp(endValue.W, startValue.W, easeT));
         }
 
         updateAction(currentValue);

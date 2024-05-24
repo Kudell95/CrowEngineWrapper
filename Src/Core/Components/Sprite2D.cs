@@ -15,6 +15,8 @@ namespace CosmicCrowGames.Core.Components
 
         public Rectangle ImageRectangle;
 
+        public Color SpriteColor = Color.White;
+
         public Sprite2D() : base(){}
 
         public Sprite2D(Texture2D texture) : base()
@@ -44,9 +46,9 @@ namespace CosmicCrowGames.Core.Components
             // _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
             
             if(!UseRectangle)
-                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, layerDepth);
+                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, SpriteColor, layerDepth);
             else
-                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, ImageRectangle, layerDepth);
+                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, SpriteColor, ImageRectangle, layerDepth);
         }
         
         

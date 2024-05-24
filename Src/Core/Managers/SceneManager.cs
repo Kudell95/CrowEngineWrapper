@@ -29,6 +29,11 @@ namespace CosmicCrowGames.Core.Scenes
         public static Action<GameTime> OnDraw;
         public static Action<GameTime> OnUpdate;
 
+        public void Initialize()
+        {
+            
+        }
+
 
         public void Update(GameTime gameTime){
             CurrentScene?.Update(gameTime);
@@ -73,6 +78,8 @@ namespace CosmicCrowGames.Core.Scenes
         {
             if(!_scenes.ContainsKey(sceneType))
                 return;
+
+            
 
             if(CurrentScene != null)
             {
