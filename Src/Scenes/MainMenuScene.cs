@@ -36,11 +36,9 @@ namespace UntitledCardGame.Scenes
             .AddComponent(new Sprite2D(GameWrapper.main.Content.Load<Texture2D>("Images/Book bg")))
             .AddComponent(new SceneSwitcher());
             DelayedCall.CreateDelayedCall(1f).OnComplete(()=>{
-                    gm1.TweenTo(new Vector2(500,0), 1f, Easing.EaseInOutBack).OnComplete(()=>{
-                        DelayedCall.CreateDelayedCall(1f).OnComplete(()=>{
-                            gm1.TweenTo(new Vector2(0,0), 1f, Easing.EaseInOutBack);
-                        });                      
-                });
+                    gm1.transform.TweenPosition(new Vector2(800,500), 1f, Easing.EaseInOutCubic,-1,RepeatType.PingPong);  
+                    gm1.transform.TweenScale(new Vector2(2,2),1f,Easing.EaseInOutQuad,-1,RepeatType.PingPong);
+                    gm1.transform.TweenRotation((float)(Math.PI / 2) ,1f,Easing.EaseInOutQuad,-1,RepeatType.PingPong);
             });
 
         }

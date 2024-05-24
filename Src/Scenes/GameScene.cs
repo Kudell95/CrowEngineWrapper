@@ -13,7 +13,8 @@ namespace UntitledCardGame.Scenes
     public class GameScene : Scene
     {
 
-        public GameScene(GraphicsDevice graphicsDevice) : base(graphicsDevice){
+        public GameScene(GraphicsDevice graphicsDevice) : base(graphicsDevice)
+        {
             
         }
 
@@ -30,7 +31,6 @@ namespace UntitledCardGame.Scenes
             .AddComponent(new Sprite2D(GameWrapper.main.Content.Load<Texture2D>("Images/book bg")))
             .AddProp(EntityProperty.Background);
             
-            gm1.TweenTo(new Vector2(500,0), 10f).OnComplete(()=>{Console.WriteLine("done");});
             
             gm1.SetScale(new Vector2(2.8f,2));  
             gm1.SetPosition(new Vector2(0, GameWrapper.main.Window.ClientBounds.Height - gm1.GetComponent<Sprite2D>().Texture.Height * gm1.transform.Scale.Y)); 

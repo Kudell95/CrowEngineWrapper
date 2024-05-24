@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 
 namespace CosmicCrowGames.Core.Tweening
 {
+    /// <summary>
+    /// This needs to be initialised in the main game class, and update called for tweens to work.
+    /// </summary>
     public class Tweener
     {
         //TODO: should move this to the service locator. but here for testing.
@@ -17,7 +20,7 @@ namespace CosmicCrowGames.Core.Tweening
         }
 
         public void Update(GameTime gameTime){
-            
+
             if(Pause)
                 return;
 

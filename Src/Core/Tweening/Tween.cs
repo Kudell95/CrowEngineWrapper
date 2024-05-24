@@ -1,9 +1,9 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Xna.Framework;
 
 namespace CosmicCrowGames.Core.Tweening
 {
-    //TODO: add repeating/reverse - ping-pong etc...
     //TODO: add support for more types. sprite color, etc.
     public abstract class Tween
     {
@@ -11,11 +11,20 @@ namespace CosmicCrowGames.Core.Tweening
         protected float elapsedTime;
         protected bool isCompleted;
         protected Action onComplete;
+        protected int currentRepeat = 0;
+
+        protected int repeatCount;
+        protected RepeatType repeatType;
+
+        protected bool isReversal = false;
 
         public Tween(){}
-        public Tween(float _duration)
+        public Tween(float _duration, int _repeatCount = 0, RepeatType _repeatType = RepeatType.None)
         {
             duration = _duration;
+            repeatCount = _repeatCount;
+            repeatType = _repeatType;
+
         }
 
         public Tween OnComplete(Action _onComplete)
@@ -24,10 +33,42 @@ namespace CosmicCrowGames.Core.Tweening
             return this;
         }
 
+        protected void ResetTween(){
+            elapsedTime = 0;
+            isCompleted = false;
+            if(repeatType == RepeatType.PingPong)
+            {
+                isReversal = !isReversal;
+            }
+        }
+
+        protected virtual bool HandleCompletion()
+        {
+            currentRepeat++;
+            //if it's -1 we just infinitely loop
+            if (currentRepeat > repeatCount && repeatCount != -1)
+            {
+                isCompleted = true;
+                onComplete?.Invoke();
+                return false;
+            }
+            else
+            {
+                ResetTween();
+                return true;
+            }
+        }
+
         public abstract bool Update(GameTime gameTime);
     }
 
     public delegate float EasingFunction(float t);
+
+    public enum RepeatType
+    {
+        None,
+        PingPong
+    }
 
     public static class Easing
     {
@@ -106,6 +147,15 @@ namespace CosmicCrowGames.Core.Tweening
             ? (1 - EaseOutBounce(1 - 2 * t)) / 2
             : (1 + EaseOutBounce(2 * t - 1)) / 2;
         }
+
+        public static float EaseInQuart(float t) => t * t * t * t;
+        public static float EaseInOutQuart(float t) => t < 0.5f ? 8 * t * t * t * t : 1 - 8 * (t - 1) * (t - 1) * (t - 1) * (t - 1);
+
+        public static float EaseInExpo(float t) => t == 0 ? 0 : (float)Math.Pow(2, 10 * (t - 1));
+
+        public static float EaseInOutQuad(float t) => t < 0.5f ? 2 * t * t : 1 - (float)Math.Pow(-2 * t + 2, 2) / 2;
+
+        public static float EaseOutQuint(float t) => 1 - (float)Math.Pow(1-t,5);
 
     }
 }

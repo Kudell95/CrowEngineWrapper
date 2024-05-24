@@ -15,8 +15,8 @@ namespace CosmicCrowGames.Core
 
     public float CurrentValue => currentValue;
 
-    public FloatTween(float startValue, float endValue, float duration, EasingFunction easingFunction, Action<float> updateAction)
-        : base(duration)
+    public FloatTween(float startValue, float endValue, float duration, EasingFunction easingFunction, Action<float> updateAction, int loops = 0, RepeatType repeatType = RepeatType.None)
+        : base(duration, loops, repeatType)
     {
         this.startValue = startValue;
         this.endValue = endValue;
@@ -37,23 +37,35 @@ namespace CosmicCrowGames.Core
 
     public override bool Update(GameTime gameTime)
     {
-        Console.WriteLine("updating float tween");
         if (isCompleted) return false;
 
         elapsedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
         float t = MathHelper.Clamp(elapsedTime / duration, 0, 1);
         float easeT = easingFunction(t);
+        if(!isReversal)
+        {
+            currentValue = MathHelper.Lerp(startValue, endValue, easeT);
+        }
+        else
+        {
+            currentValue = MathHelper.Lerp(endValue, startValue, easeT);
+        }
 
-        currentValue = MathHelper.Lerp(startValue, endValue, easeT);
         updateAction(currentValue);
         if (elapsedTime >= duration)
         {
-            updateAction(endValue);
-            isCompleted = true;
-            onComplete?.Invoke();
+
+            if(!HandleCompletion())
+            {
+                currentValue = isReversal ? startValue : endValue;
+                return false;
+            }
+            // updateAction(endValue);
+            // isCompleted = true;
+            // onComplete?.Invoke();
         }
 
-        return !isCompleted;
+        return true;
     }
     }
 }
