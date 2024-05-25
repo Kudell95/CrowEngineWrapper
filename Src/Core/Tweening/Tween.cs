@@ -166,7 +166,14 @@ namespace CosmicCrowGames.Core.Tweening
         public static float EaseOutSine(float t) => (float)Math.Sin((t * Math.PI) / 2);
 
         public static float EaseInOutSine(float t) => -(float)Math.Cos(Math.PI * t) / 2 + 0.5f;
+
+
+
+        //FIXME: seems to be broken, values from https://cubic-bezier.com/#.17,.67,1,2.06 
+        public static float TestCustomEase(float t) => EaseCubicBezier(t,0.17f,.67f,1f,2.06f);
+        public static float EaseCubicBezier(float t, float p1, float p2, float p3, float p4) => p1 * (1 - t) * (1 - t) * (1 - t) + 3 * p2 * t * (1 - t) * (1 - t) + 3 * p3 * t * t * (1 - t) + p4 * t * t * t;
         
+        //could be cool to look into this at some point https://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B%C3%A9zier_curves so that custom bezier curves could be made
 
     }
 }

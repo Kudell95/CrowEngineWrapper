@@ -7,7 +7,7 @@ namespace UntitledCardGame.Scenes
 
     public class TemplateScene : Scene
     {
-        public TemplateScene(GraphicsDevice graphicsDevice) : base(graphicsDevice){
+        public TemplateScene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(graphicsDevice, spriteBatch){
 
         }
 

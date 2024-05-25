@@ -83,6 +83,9 @@ public abstract class Entity
     public virtual void Destroy()
     {
         IsDestroyed = true;
+        for(int i = _components.Count-1; i >= 0; i--){
+            _components[i].Destroy();
+        }
     }
     
 

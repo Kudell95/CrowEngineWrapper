@@ -2,16 +2,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using CosmicCrowGames.Core;
-using CosmicCrowGames.Core.Components;
+using System;
 
 namespace UntitledCardGame.Components{
 
     public class SceneSwitcher : Component
     {
-        bool keyPressed = false;
-        public float cooldown = 0.2f;
-
-        private float timer = 0f;
 
         public override void Draw(GameTime gameTime)
         {
@@ -28,18 +24,17 @@ namespace UntitledCardGame.Components{
             // throw new System.NotImplementedException();
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if( Keyboard.GetState().IsKeyDown(Keys.I) && !keyPressed)
-           {
-               GameWrapper.main.SceneManager.LoadScene(SceneType.GameScene);
-               timer = 0;
-               keyPressed = true;
-           }
+            if(InputManager.GetKeyDown(Keys.O))
+            {
+                Console.WriteLine("Pressed L");
+               GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.MainMenu,Color.Red,0.5f);
+            }
 
-            if(keyPressed)
-                timer += deltaTime;
+            if(InputManager.GetKeyDown(Keys.I))
+            {
+               GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.GameScene,Color.Red,0.5f);
+            }
 
-            if(keyPressed && !Keyboard.GetState().IsKeyUp(Keys.L) && timer > cooldown)
-                keyPressed = false;
         }
         public override void Destroy()
         {

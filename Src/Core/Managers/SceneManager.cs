@@ -2,8 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using FMOD;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using UntitledCardGame;
+using UntitledCardGame.Scenes;
 
 namespace CosmicCrowGames.Core.Scenes
 {
@@ -29,11 +32,24 @@ namespace CosmicCrowGames.Core.Scenes
         public static Action<GameTime> OnDraw;
         public static Action<GameTime> OnUpdate;
 
+        private GraphicsDevice graphicsDevice;
+        private SpriteBatch spriteBatch;
+
         public void Initialize()
         {
             
         }
 
+
+        public SceneManager(){
+            graphicsDevice = GameWrapper.Main.GraphicsDevice;
+            spriteBatch = GameWrapper.Main.MainSpriteBatch;
+        }
+
+        public SceneManager(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch){
+            this.graphicsDevice = graphicsDevice;
+            this.spriteBatch = spriteBatch;
+        }
 
         public void Update(GameTime gameTime){
             CurrentScene?.Update(gameTime);
@@ -76,17 +92,15 @@ namespace CosmicCrowGames.Core.Scenes
 
         public void LoadScene(SceneType sceneType)
         {
-            if(!_scenes.ContainsKey(sceneType))
+            if(!SceneFactory.SupportedSceneTypes.Contains(sceneType))
                 return;
-
-            
 
             if(CurrentScene != null)
             {
                 CurrentScene.OnSceneUnloaded(); // may need to await for this... or listen for event.
             }
             
-            CurrentScene = _scenes[sceneType];
+            CurrentScene = SceneFactory.CreateScene(sceneType, graphicsDevice, spriteBatch);
 
             CurrentScene.OnSceneLoaded();
 

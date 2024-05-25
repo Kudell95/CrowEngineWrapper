@@ -20,9 +20,9 @@ namespace CosmicCrowGames.Core.Scenes
             _id = Guid.NewGuid();
         }
 
-        public Scene(GraphicsDevice graphicsDevice) : base(){
+        public Scene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(){
             GraphicsDevice = graphicsDevice;
-            SpriteBatch = new SpriteBatch(graphicsDevice);
+            SpriteBatch = spriteBatch;
             EntityManager = new EntityManager(SpriteBatch);
         }
 
@@ -33,6 +33,7 @@ namespace CosmicCrowGames.Core.Scenes
             EntityManager.OnDestroy();
             EntityManager.Dispose();
             EntityManager = null;
+            SpriteBatch.Dispose();
         }
 
 
@@ -43,7 +44,6 @@ namespace CosmicCrowGames.Core.Scenes
         public Entity Instantiate(Entity entity)
         {
             EntityManager.AddEntity(entity);
-
             return entity;
         }
 

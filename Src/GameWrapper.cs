@@ -9,28 +9,34 @@ using UntitledCardGame.Components;
 using CosmicCrowGames.Core.Scenes;
 using UntitledCardGame.Scenes;
 using CosmicCrowGames.Core.Tweening;
+using System.Security.Cryptography;
 
 namespace UntitledCardGame;
 
 public class GameWrapper : Game
 {
     private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+    public SpriteBatch MainSpriteBatch {get; private set;}
     private FrameCounter _frameCounter = new FrameCounter();
 
     private SpriteFont _spriteFont;
     
-    public static GameWrapper main;
+    public static GameWrapper Main;
+
+    public EntityManager GlobalEntityManager;
 
     public Tweener Tweener;
 
     public SceneManager SceneManager { get; private set; }
+    public SceneTransitionManager SceneTransitionManager { get; private set; }
+
+    public ResolutionScaleManager ScreenScaleManager { get; private set; }
 
     public GameWrapper()
     {
         //we are gonna make a singleton for the game wrapper, as this will contain references to things like the service locator etc...
-        if(main == null)
-            main = this;
+        if(Main == null)
+            Main = this;
 
         if(Tweener.Instance == null)
         {
@@ -55,7 +61,7 @@ public class GameWrapper : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
         
-
+        Window.ClientSizeChanged += OnClientSizeChanged;
 
     }
 
@@ -67,11 +73,20 @@ public class GameWrapper : Game
 
     protected override void LoadContent()
     {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        MainSpriteBatch = new SpriteBatch(GraphicsDevice);
         _spriteFont = Content.Load<SpriteFont>("Fonts/Consolas");
 
-        SceneManager = new SceneManager();
-        SceneManager.AddScenes(SceneFactory.CreateScenes(GraphicsDevice));     
+        SceneManager = new SceneManager(GraphicsDevice,MainSpriteBatch);
+        // SceneManager.AddScenes(SceneFactory.CreateScenes(GraphicsDevice));    
+
+        SceneTransitionManager = new SceneTransitionManager(GraphicsDevice, MainSpriteBatch);
+        SceneTransitionManager.Initialize(); 
+
+        GlobalEntityManager = new EntityManager(MainSpriteBatch);
+        GlobalEntityManager.Initialize();
+
+        ScreenScaleManager = new ResolutionScaleManager(_graphics,1920,1080); 
+        ScreenScaleManager.UpdateScaleMatrix();
     }
 
     protected override void Update(GameTime gameTime)
@@ -81,10 +96,11 @@ public class GameWrapper : Game
 
         // TODO: Add your update logic here
         // _entityManager.Update(gameTime);
-
         SceneManager?.Update(gameTime);
-        Tweener.Instance?.Update(gameTime);
-        
+        SceneTransitionManager?.Update(gameTime);
+        Tweener?.Update(gameTime);
+        InputManager.Update(gameTime);
+        GlobalEntityManager?.Update(gameTime);
         base.Update(gameTime);
     }
 
@@ -92,10 +108,12 @@ public class GameWrapper : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        // GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.CornflowerBlue);
         // _entityManager.Draw(gameTime);
 
         SceneManager?.Draw(gameTime);
+        SceneTransitionManager?.Draw(gameTime);
+        GlobalEntityManager?.Draw(gameTime);
 
     ///DEBUG-------------------------------------------
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -105,9 +123,21 @@ public class GameWrapper : Game
          var fps = string.Format("FPS: {0}", _frameCounter.AverageFramesPerSecond);
 
 
-        _spriteBatch.Begin();
-        _spriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
-        _spriteBatch.End();
+        MainSpriteBatch.Begin();
+        MainSpriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
+        MainSpriteBatch.End();
         base.Draw(gameTime);
     }
+
+    /// <summary>
+    /// Handles the client window size change
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void OnClientSizeChanged(object sender, EventArgs e)
+    {
+        // base.OnClientSizeChanged(sender, e);
+        ScreenScaleManager.UpdateScaleMatrix();
+    }
+
 }

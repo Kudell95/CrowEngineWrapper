@@ -55,6 +55,7 @@ namespace CosmicCrowGames.Core
         public virtual void Destroy()
         {
             Enabled = false;
+            Console.WriteLine("Destroying Component for " + Entity.ID);
             Dispose();
         }
 

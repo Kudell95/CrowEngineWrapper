@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using CosmicCrowGames.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +10,7 @@ namespace CosmicCrowGames.Core.Components
     {
         public Texture2D Texture;
 
-        public int layerDepth = 0;
+        public int layerDepth = 1;
 
         public bool UseRectangle = false;
 
@@ -44,7 +45,7 @@ namespace CosmicCrowGames.Core.Components
         public override void Draw(GameTime gameTime)
         {
             // _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
-            
+            // Console.WriteLine("Drawing Sprite2D for " + Entity.ID);
             if(!UseRectangle)
                 Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, SpriteColor, layerDepth);
             else
@@ -63,12 +64,20 @@ namespace CosmicCrowGames.Core.Components
 
         public override void Update(GameTime gameTime)
         {
+
         }
 
         public override void Destroy()
         {
             base.Destroy();
             // throw new NotImplementedException();
+        }
+
+        public override void Dispose()
+        {
+            Console.WriteLine("Disposing Sprite2D for " + Entity.ID);
+            base.Dispose();
+            
         }
     }
 }
