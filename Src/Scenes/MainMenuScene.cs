@@ -13,7 +13,7 @@ namespace UntitledCardGame.Scenes
 {
     public class MainMenuScene : Scene
     {
-        public MainMenuScene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(graphicsDevice, new SpriteBatch(graphicsDevice))
+        public MainMenuScene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(graphicsDevice, spriteBatch)
         {
             
         }
@@ -24,8 +24,6 @@ namespace UntitledCardGame.Scenes
 
         public override void Initialize()
         {
-            // SpriteBatch = new SpriteBatch(GraphicsDevice);
-            // EntityManager = new EntityManager(SpriteBatch);
         }
 
         public override void OnSceneLoaded()
@@ -41,7 +39,7 @@ namespace UntitledCardGame.Scenes
 
             DelayedCall.CreateDelayedCall(1f).OnComplete(()=>{
                     // gm1.GetComponent<Sprite2D>().TweenColor(Color.White, 1f, Easing.EaseInSine, -1, RepeatType.PingPong);
-                    gm1.transform.TweenPosition(new Vector2(800,500), 1f, Easing.EaseInOutBack,-1,RepeatType.PingPong).OnComplete(()=>{
+                    gm1.transform.TweenPosition(new Vector2(800,500), 1f, Easing.EaseInOutCubic,-1,RepeatType.PingPong).OnComplete(()=>{
                         // gm1.transform.TweenScale(new Vector2(2,2),1f,Easing.Ease,0,RepeatType.None);
                         // gm1.transform.TweenRotation((float)Math.PI*2 ,1f,Easing.EaseInOutElastic,0,RepeatType.None).OnComplete(()=>{
                         //     // Color targetColor = new Color(Color.White.ToVector4().X, Color.White.ToVector4().Y, Color.White.ToVector4().Z, 0);

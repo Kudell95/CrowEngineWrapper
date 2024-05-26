@@ -8,6 +8,7 @@ namespace UntitledCardGame.Components{
 
     public class SceneSwitcher : Component
     {
+        Color transitionColor = new Color(26,27,38);
 
         public override void Draw(GameTime gameTime)
         {
@@ -21,25 +22,21 @@ namespace UntitledCardGame.Components{
 
         public override void Update(GameTime gameTime)
         {
-            // throw new System.NotImplementedException();
-            var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
             if(InputManager.GetKeyDown(Keys.O))
             {
                 Console.WriteLine("Pressed L");
-               GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.MainMenu,Color.Red,0.5f);
+               GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.MainMenu,transitionColor,0.3f);
             }
 
             if(InputManager.GetKeyDown(Keys.I))
             {
-               GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.GameScene,Color.Red,0.5f);
+               GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.GameScene,transitionColor,0.3f);
             }
 
         }
         public override void Destroy()
         {
             base.Destroy();
-            // throw new System.NotImplementedException();
         }
     }
 }

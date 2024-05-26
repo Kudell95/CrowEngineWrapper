@@ -114,8 +114,8 @@ namespace CosmicCrowGames.Core
 
        public static Tween TweenColor(this Sprite2D input, Color target, float duration)
        {
-            Vector4Tween tween = new Vector4Tween(input.SpriteColor.ToVector4(), target.ToVector4(), duration, Easing.Linear, (Vector4 x) => {
-                input.SpriteColor = new Color(x);
+            Vector4Tween tween = new Vector4Tween(input.CurrentColour.ToVector4(), target.ToVector4(), duration, Easing.Linear, (Vector4 x) => {
+                input.CurrentColour = new Color(x);
             });
            
             Tweener.Instance.AddTween(tween);
@@ -124,8 +124,8 @@ namespace CosmicCrowGames.Core
 
        public static Tween TweenColor(this Sprite2D input, Color target, float duration, EasingFunction easingFunction)
        {
-            Vector4Tween tween = new Vector4Tween(input.SpriteColor.ToVector4(), target.ToVector4(), duration, easingFunction, (Vector4 x) => {
-                input.SpriteColor = new Color(x);
+            Vector4Tween tween = new Vector4Tween(input.CurrentColour.ToVector4(), target.ToVector4(), duration, easingFunction, (Vector4 x) => {
+                input.CurrentColour = new Color(x);
             });
            
             Tweener.Instance.AddTween(tween);
@@ -133,8 +133,8 @@ namespace CosmicCrowGames.Core
        }
         public static Tween TweenColor(this Sprite2D input, Color target, float duration, EasingFunction easingFunction, int loops, RepeatType repeatType)
         {
-                Vector4Tween tween = new Vector4Tween(input.SpriteColor.ToVector4(), target.ToVector4(), duration, easingFunction, (Vector4 x) => {
-                    input.SpriteColor = new Color(x);
+                Vector4Tween tween = new Vector4Tween(input.CurrentColour.ToVector4(), target.ToVector4(), duration, easingFunction, (Vector4 x) => {
+                    input.CurrentColour = new Color(x);
                 }, loops, repeatType);
             
                 Tweener.Instance.AddTween(tween);

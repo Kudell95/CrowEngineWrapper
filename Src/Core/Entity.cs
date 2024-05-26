@@ -139,6 +139,8 @@ public abstract class Entity
         component.OnDisabled += OnComponentDisabled;
         component.OnEnabled += OnComponentEnabled;
 
+        component.Initialize();
+
         return this;
     }
 
@@ -225,14 +227,14 @@ public abstract class Entity
         if(parent == null)
             return this;
 
-        transform.Parent = parent.transform;
+        parent.transform.AddChild(this.transform);
         return this;
     }
 
 
     public Entity ClearParent()
     {
-        transform.Parent = null;
+        this.transform.Parent.RemoveChild(this.transform);
         return this;
     }
 

@@ -22,7 +22,10 @@ namespace CosmicCrowGames.Core.Scenes
 
         public Scene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(){
             GraphicsDevice = graphicsDevice;
-            SpriteBatch = spriteBatch;
+            //FIXME: i have no fucking clue why, but passing the spritebatch through here causes the graphics device to be null.
+            // So create the sprite batch fresh when loading scene.
+            //REASON WHY IS BECAUSE WE"RE DISPOSING SPRITE BATCH ON UNLOADED!!! Might not be a bug, keeping here for now and monitoring memory.
+            SpriteBatch = new SpriteBatch(graphicsDevice);
             EntityManager = new EntityManager(SpriteBatch);
         }
 

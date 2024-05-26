@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using CosmicCrowGames.Core;
 using Microsoft.Xna.Framework;
@@ -16,7 +17,22 @@ namespace CosmicCrowGames.Core.Components
 
         public Rectangle ImageRectangle;
 
-        public Color SpriteColor = Color.White;
+        private Color _spriteColour;
+
+        public Color SpriteColor {
+            get {
+                return _spriteColour;
+            }
+            set
+            {
+                _spriteColour = value;
+                CurrentColour = value;
+            }
+
+        }
+        public Color CurrentColour = Color.White;
+
+        public AnchorPoint CurrentPivotAnchor = AnchorPoint.None;
 
         public Sprite2D() : base(){}
 
@@ -33,8 +49,7 @@ namespace CosmicCrowGames.Core.Components
 
         public Sprite2D(Texture2D texture, Entity entity) : base(entity)
         {
-            Texture = texture;
-            
+            Texture = texture;    
         }
 
         public Sprite2D(Entity entity) : base(entity)
@@ -47,16 +62,17 @@ namespace CosmicCrowGames.Core.Components
             // _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
             // Console.WriteLine("Drawing Sprite2D for " + Entity.ID);
             if(!UseRectangle)
-                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, SpriteColor, layerDepth);
+                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, CurrentColour, layerDepth);
             else
-                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, SpriteColor, ImageRectangle, layerDepth);
+                Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, CurrentColour, ImageRectangle, layerDepth);
         }
         
         
 
         public override void Initialize()
         {
-            // throw new System.NotImplementedException();
+
+            // throw new System.NotImplementedException();   
 
             if(!Entity.HasComponent<Renderer2D>())
                 Console.WriteLine("WARNING: Entity does not have a Renderer2D component");
@@ -67,6 +83,42 @@ namespace CosmicCrowGames.Core.Components
 
         }
 
+        public Sprite2D SetPivot(AnchorPoint anchor)
+        {
+            Vector2 PivotPoint = Texture.Bounds.Center.ToVector2();
+
+            switch (anchor)
+            {
+                case AnchorPoint.TopLeft:
+                    PivotPoint = new Vector2(0, 0);
+                    break;
+                case AnchorPoint.TopCenter:
+                    break;
+                case AnchorPoint.TopRight:
+                    break;
+                case AnchorPoint.MiddleLeft:
+                    break;
+                case AnchorPoint.MiddleCenter:
+                    PivotPoint = UseRectangle ? ImageRectangle.Center.ToVector2() :Texture.Bounds.Center.ToVector2();
+                    break;
+                case AnchorPoint.MiddleRight:
+                    break;
+                case AnchorPoint.BottomLeft:
+                    break;
+                case AnchorPoint.BottomCenter:
+                    PivotPoint = new Vector2(Texture.Bounds.Center.X, Texture.Bounds.Bottom);
+                    break;
+                case AnchorPoint.BottomRight:
+                    break;
+            }
+            
+            CurrentPivotAnchor = anchor;
+            
+            Entity.transform.Pivot = PivotPoint;
+
+            return this;
+        }
+
         public override void Destroy()
         {
             base.Destroy();
@@ -75,6 +127,9 @@ namespace CosmicCrowGames.Core.Components
 
         public override void Dispose()
         {
+            //NOTE: we should never manually dispose of Texture2d's as they are managed by the content manager, any shared content is cached and rather than reinitialising every time.
+            //So memory used by texture2d shouldn't be a problem anyway.
+            Texture = null;
             Console.WriteLine("Disposing Sprite2D for " + Entity.ID);
             base.Dispose();
             

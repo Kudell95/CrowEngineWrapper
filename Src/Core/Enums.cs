@@ -7,7 +7,8 @@ public enum EntityProperty
     Destructable,
     Destroyed,
     Moveable,
-    Background
+    Background,
+    GUIElement
 }
 
 public enum SceneType

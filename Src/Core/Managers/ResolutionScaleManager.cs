@@ -25,11 +25,11 @@ namespace CosmicCrowGames.Core
 
         public void ApplyResolutionSettings()
         {
-            screenWidth = graphics.PreferredBackBufferWidth;
-            screenHeight = graphics.PreferredBackBufferHeight;
+            screenWidth = graphics.GraphicsDevice.Viewport.Width;
+            screenHeight = graphics.GraphicsDevice.Viewport.Height;
             float scaleX = (float)screenWidth / virtualWidth;
             float scaleY = (float)screenHeight / virtualHeight;
-            float scale = Math.Max(scaleX, scaleY);
+            float scale = Math.Min(scaleX, scaleY);
             scaleMatrix = Matrix.CreateScale(scale, scale, 1f);
         }
 
@@ -39,24 +39,24 @@ namespace CosmicCrowGames.Core
         }
         public void UpdateScaleMatrix()
         {
-            int screenWidth = graphics.GraphicsDevice.PresentationParameters.BackBufferWidth;
-            int screenHeight = graphics.GraphicsDevice.PresentationParameters.BackBufferHeight;
+            int screenWidth = graphics.GraphicsDevice.Viewport.Width;
+            int screenHeight = graphics.GraphicsDevice.Viewport.Height;
 
             float scaleX = (float)screenWidth / virtualWidth;
             float scaleY = (float)screenHeight / virtualHeight;
             float scale = Math.Min(scaleX, scaleY);
 
-            scaleMatrix = Matrix.CreateScale(scale, scale, 1f);
+            // scaleMatrix = Matrix.CreateScale(scale, scale, 1f);
 
-            // Calculate the viewport dimensions while maintaining aspect ratio
-            int viewportWidth = (int)(virtualWidth * scale);
-            int viewportHeight = (int)(virtualHeight * scale);
+            // // Calculate the viewport dimensions while maintaining aspect ratio
+            // int viewportWidth = (int)(virtualWidth * scale);
+            // int viewportHeight = (int)(virtualHeight * scale);
 
-            // Center the viewport within the window
-            int viewportX = (screenWidth - viewportWidth) / 2;
-            int viewportY = (screenHeight - viewportHeight) / 2;
+            // // Center the viewport within the window
+            // int viewportX = (screenWidth - viewportWidth) / 2;
+            // int viewportY = (screenHeight - viewportHeight) / 2;
 
-            graphics.GraphicsDevice.Viewport = new Viewport(viewportX, viewportY, viewportWidth, viewportHeight);
+            // graphics.GraphicsDevice.Viewport = new Viewport(viewportX, viewportY, viewportWidth, viewportHeight);
         }
 
     }

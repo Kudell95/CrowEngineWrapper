@@ -1,17 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using CosmicCrowGames.Core.Components;
-using CosmicCrowGames.Core;
 using System;
-using FmodForFoxes;
-using UntitledCardGame.Components;
 using CosmicCrowGames.Core.Scenes;
-using UntitledCardGame.Scenes;
 using CosmicCrowGames.Core.Tweening;
-using System.Security.Cryptography;
 
-namespace UntitledCardGame;
+namespace CosmicCrowGames.Core;
 
 public class GameWrapper : Game
 {
