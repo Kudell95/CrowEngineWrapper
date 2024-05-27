@@ -95,6 +95,7 @@ public class GameWrapper : Game
         Tweener?.Update(gameTime);
         InputManager.Update(gameTime);
         GlobalEntityManager?.Update(gameTime);
+        MouseUserInput.Update();
         base.Update(gameTime);
     }
 
@@ -132,6 +133,14 @@ public class GameWrapper : Game
     {
         // base.OnClientSizeChanged(sender, e);
         ScreenScaleManager.UpdateScaleMatrix();
+    }
+
+
+    public void QuitGame()
+    {
+        //Do any cleanup if required
+
+        Exit();
     }
 
 }

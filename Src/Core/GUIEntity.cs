@@ -15,6 +15,8 @@ namespace CosmicCrowGames.Core
         private float _width;
         private float _height;
 
+        public bool FillScreen;
+
         bool _TweenStarted = false;
 
         public float Width {
@@ -62,7 +64,7 @@ namespace CosmicCrowGames.Core
                 }
             }        
         
-
+            
 
             AddComponent(new Renderer2D(_spritebatch));
             Sprite2D sprite2D = new Sprite2D(Texture);
@@ -92,6 +94,11 @@ namespace CosmicCrowGames.Core
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            if(FillScreen)
+            {
+                Width = GameWrapper.Main.GraphicsDevice.Viewport.Width;
+                Height = GameWrapper.Main.GraphicsDevice.Viewport.Height;
+            }
         }
 
         public override void Draw(GameTime gameTime)

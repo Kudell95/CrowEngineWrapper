@@ -12,6 +12,7 @@ namespace CosmicCrowGames.Core
     /// </summary>
     public abstract class Component : IDisposable
     {
+        //TODO: would be cool to add a requirement for props or something.
         private bool _enabled = true;
 
         public Action<Component> OnEnabled;
