@@ -64,7 +64,7 @@ namespace UntitledCardGame.Scenes
 
             gm1.Active = false;
 
-            LaunchButton = BuildButton(new Vector2(0,-250), new Vector2(300,100), "Launch Game", Color.Gray, Color.Black, AnchorPoint.MiddleCenter, ()=>{
+            LaunchButton = BuildButton(new Vector2(0,-250), new Vector2(300,100), "Start", Color.Gray, Color.Black, AnchorPoint.MiddleCenter, ()=>{
                 GameWrapper.Main.SceneTransitionManager.LoadScene(SceneType.GameScene,Color.Black,0.3f);
             });
 
@@ -96,10 +96,10 @@ namespace UntitledCardGame.Scenes
             Text textObject = new Text();
             textObject.TextColour = fontColor;
             textObject.TextValue = text;
-            textObject.FontSize = 32;
+            textObject.SetFontSize(70);
             button.AddComponent(textObject);
             button.Active = true;
-            button.AddComponent(new Button(button.GetComponent<Sprite2D>().ImageRectangle, OnClickAction));
+            button.AddComponent(new Button(OnClickAction));
 
             button.GetComponent<Button>().OnMouseEnter += ()=>{
                 button.GetComponent<Sprite2D>().SpriteColor = ButtonEntryColor;

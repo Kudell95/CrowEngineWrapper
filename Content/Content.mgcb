@@ -5,11 +5,12 @@
 /intermediateDir:obj/$(Platform)
 /platform:DesktopGL
 /config:
-/profile:Reach
+/profile:HiDef
 /compress:False
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\lib\DistanceFont.dll
 
 #---------------------------------- Content ---------------------------------#
 

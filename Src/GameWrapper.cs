@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using CosmicCrowGames.Core.Scenes;
 using CosmicCrowGames.Core.Tweening;
+using CosmicCrowGames.Core.Fonts;
 
 namespace CosmicCrowGames.Core;
 
@@ -38,6 +39,8 @@ public class GameWrapper : Game
         }
 
         Tweener = Tweener.Instance;
+
+        FontManager.Initialize();
         
         _graphics = new GraphicsDeviceManager(this)
         {

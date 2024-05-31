@@ -10,13 +10,29 @@ namespace CosmicCrowGames.Core.Components.UI
         public MouseInteractionHelper InteractionHelper { get; set; }
         public Vector2 Bounds;
 
-        public Rectangle InteractionRectangle;
+        public Rectangle? InteractionRectangle = null; 
         public Action OnMouseButtonUp { get; set; }
         public Action OnMouseButtonDown { get; set; }
         public Action OnMouseEnter {get;set;}
         public Action OnMouseLeave {get;set;}
 
 
+
+        public Button(Action onClick) : base(){
+            if(Entity != null && Entity.HasComponent<Sprite2D>())
+            {
+                Sprite2D sprite = Entity.GetComponent<Sprite2D>();
+                if(sprite.UseRectangle)
+                {
+                    Bounds = sprite.ImageRectangle.Size.ToVector2();
+                    InteractionRectangle = sprite.ImageRectangle;
+                }else{
+                    Bounds = sprite.Texture.Bounds.Size.ToVector2();
+                    InteractionRectangle = sprite.Texture.Bounds;
+                }
+            }     
+            OnMouseButtonUp = onClick;          
+        }
 
 
         public Button(Vector2 bounds) : base()
@@ -47,11 +63,26 @@ namespace CosmicCrowGames.Core.Components.UI
 
         public override void Initialize()
         {
-            InteractionHelper = new MouseInteractionHelper(InteractionRectangle);
+            if(Entity != null && Entity.HasComponent<Sprite2D>() && InteractionRectangle == null)
+            {
+                Sprite2D sprite = Entity.GetComponent<Sprite2D>();
+                if(sprite.UseRectangle)
+                {
+                    Bounds = sprite.ImageRectangle.Size.ToVector2();
+                    InteractionRectangle = sprite.ImageRectangle;
+                }else{
+                    Bounds = sprite.Texture.Bounds.Size.ToVector2();
+                    InteractionRectangle = sprite.Texture.Bounds;
+                }
+            }     
+
+            if(InteractionRectangle != null){
+            InteractionHelper = new MouseInteractionHelper((Rectangle)InteractionRectangle);
             InteractionHelper.OnMouseUp += OnClickReleased;
             InteractionHelper.OnMouseEnter += OnMouseOver;
             InteractionHelper.OnMouseLeave += OnMouseExit;
             InteractionHelper.OnMouseDown += OnCLickPressed;
+            }
         }
 
         public override void Update(GameTime gameTime)
