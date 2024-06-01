@@ -99,7 +99,6 @@ namespace UntitledCardGame.Scenes
             button.AddComponent(textObject);
             button.Active = true;
             button.AddComponent(new Button(OnClickAction));
-
             button.GetComponent<Button>().OnMouseEnter += ()=>{
                 sprite.SpriteColor = ButtonEntryColor;
             };
@@ -116,14 +115,11 @@ namespace UntitledCardGame.Scenes
                 sprite.SpriteColor = ButtonEntryColor;
             };
 
-
             return button;
-
         }
 
         public override void OnSceneUnloaded()
         {            
-            Console.WriteLine("Unloading Main Menu Scene");
             base.OnSceneUnloaded();
             //unload content
         }

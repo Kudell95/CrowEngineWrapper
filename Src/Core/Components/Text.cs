@@ -8,16 +8,14 @@ namespace CosmicCrowGames.Core.Components.UI
 {
     public class Text : Component
     {
-
-        //TODO: add justification & alignment - also, probably worth checking out something like this https://github.com/SometimesRain/MonogameDistanceFont 
-        //monogame's font implementation just doesn't seem to cut it.
         public string TextValue;
         private int _fontSize = 20;
         public Color TextColour = Color.Black;
         private SpriteBatch _spriteBatch;
         private Rectangle? _textBounds = null;
-
         SpriteFontBase _font;
+
+        private string _fontName;
 
         public TextVerticalAlignment VerticalAlignment = TextVerticalAlignment.Center;
 
@@ -25,7 +23,7 @@ namespace CosmicCrowGames.Core.Components.UI
 
         public Text()
         {
-            _font = FontManager.MainFontSystem.GetFont(_fontSize);
+            _font = FontManager.GetFont(_fontName, _fontSize);
         }
 
         public Text(string Text, int fontSize = 20)
@@ -59,7 +57,7 @@ namespace CosmicCrowGames.Core.Components.UI
         public override void Initialize()
         {
             // Font = GameWrapper.Main.Content.Load<SpriteFont>("Fonts/Consolas");
-            _font = FontManager.MainFontSystem.GetFont(_fontSize);
+            SetFont(_fontName);
             
             _spriteBatch = GameWrapper.Main.MainSpriteBatch;
 
@@ -73,11 +71,22 @@ namespace CosmicCrowGames.Core.Components.UI
             }
         }
 
+        public Text SetFont(string font = "")
+        {
+            if(string.IsNullOrEmpty(font))
+                font = AvailableFonts.ConsolasBold;
+
+            _fontName = font;
+
+            _font = FontManager.GetFont(font, _fontSize);
+            return this;
+        }
+
 
         public Text SetFontSize(int size)
         {
             _fontSize = size;
-            _font = FontManager.MainFontSystem.GetFont(_fontSize);
+            SetFont(_fontName);
             return this;
         }
 
@@ -100,30 +109,28 @@ namespace CosmicCrowGames.Core.Components.UI
             Vector2 textSize = _font.MeasureString(TextValue);    
             float xPos = _textBounds.Value.Width;
             float yPos = _textBounds.Value.Height;
-
-            Console.WriteLine(_textBounds.Value);
             
             switch(HorizontalAlignment){
                 case TextHorizontalAlignment.Left:
-                    xPos = (Entity.transform.Position.X + _textBounds.Value.X) - textSize.X / 2;
+                    xPos = Entity.transform.Position.X + _textBounds.Value.X;
                     break;
                 case TextHorizontalAlignment.Center:
                     xPos = (Entity.transform.Position.X + _textBounds.Value.Center.X) - textSize.X / 2;
                     break;
                 case TextHorizontalAlignment.Right:
-                    xPos = (Entity.transform.Position.X + _textBounds.Value.Right) - textSize.X / 2;
+                    xPos = (Entity.transform.Position.X + _textBounds.Value.Right) - textSize.X;
                     break;
             }
 
             switch(VerticalAlignment){
-                case TextVerticalAlignment.Left:
-                    yPos = (Entity.transform.Position.Y + _textBounds.Value.Y) - textSize.Y / 2;
+                case TextVerticalAlignment.Top:
+                    yPos = Entity.transform.Position.Y + _textBounds.Value.Y;
                     break;
                 case TextVerticalAlignment.Center:
                     yPos = (Entity.transform.Position.Y +  _textBounds.Value.Center.Y) - textSize.Y / 2;
                     break;
-                case TextVerticalAlignment.Right:
-                    yPos = (Entity.transform.Position.Y + _textBounds.Value.Bottom) - textSize.Y / 2;
+                case TextVerticalAlignment.Bottom:
+                    yPos = (Entity.transform.Position.Y + _textBounds.Value.Bottom) - textSize.Y;
                     break;
             }
 
@@ -133,9 +140,9 @@ namespace CosmicCrowGames.Core.Components.UI
 
     public enum TextVerticalAlignment
     {
-        Left,
+        Top,
         Center,
-        Right
+        Bottom
     }
 
     public enum TextHorizontalAlignment

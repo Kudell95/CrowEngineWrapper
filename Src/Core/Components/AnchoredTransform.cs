@@ -50,7 +50,6 @@ namespace CosmicCrowGames.Core.Components
             int height = _graphicsDevice.Viewport.Height;
 
 
-            // Console.WriteLine($"Width: {width} Height: {height}");
             Vector2 anchoredPosition = new Vector2();
             switch(Anchor){
                 case AnchorPoint.TopLeft:

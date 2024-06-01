@@ -48,12 +48,10 @@ namespace UntitledCardGame.Scenes
             PauseMenu.GetComponent<Sprite2D>().SpriteColor = Color.DarkSlateGray;
             PauseMenu.GetComponent<Sprite2D>().CurrentColour = Color.Transparent;
             PauseMenu.Active = false;
-
         }
 
         public override void OnSceneLoaded()
         {
-            Console.WriteLine("Loading the Game Scene");
             // throw new System.NotImplementedException();
             Initialize();
         }
@@ -71,8 +69,6 @@ namespace UntitledCardGame.Scenes
             if(InputManager.GetKeyDown(Keys.T))
                 PauseMenu.ToggleGUI();
 
-            if(InputManager.GetKeyDown(Keys.A))
-                Console.WriteLine("Test");
 
         }
 

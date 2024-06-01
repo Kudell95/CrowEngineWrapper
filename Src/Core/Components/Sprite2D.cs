@@ -60,7 +60,7 @@ namespace CosmicCrowGames.Core.Components
         public override void Draw(GameTime gameTime)
         {
             // _spriteBatch.Draw(Texture, Entity.transform.Position,null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
-            // Console.WriteLine("Drawing Sprite2D for " + Entity.ID);
+          
             if(!UseRectangle)
                 Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, CurrentColour, layerDepth);
             else
@@ -130,7 +130,6 @@ namespace CosmicCrowGames.Core.Components
             //NOTE: we should never manually dispose of Texture2d's as they are managed by the content manager, any shared content is cached and rather than reinitialising every time.
             //So memory used by texture2d shouldn't be a problem anyway.
             Texture = null;
-            Console.WriteLine("Disposing Sprite2D for " + Entity.ID);
             base.Dispose();
             
         }
