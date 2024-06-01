@@ -6,9 +6,11 @@ using FontStashSharp;
 
 namespace CosmicCrowGames.Core.Fonts
 {
+    //NOTE: see here: https://github.com/FontStashSharp/FontStashSharp/wiki/Rich-Text for rich text cheat sheet.
+
+
     public static class FontManager
     {
-        // public static FontSystem MainFontSystem;
 
         private static Dictionary<String,FontSystem> Fonts = new Dictionary<string, FontSystem>();
 
@@ -16,13 +18,7 @@ namespace CosmicCrowGames.Core.Fonts
 
         public static void Initialize()
         {
-            // if(!Directory.Exists("Fonts"))
-            // {
-                
-            // }
-
-            // MainFontSystem = new FontSystem();
-            // MainFontSystem.AddFont(File.ReadAllBytes(Path.Combine(fontPath, "Consolas.ttf")));
+            //NOTE: remember to update available fonts when adding new fonts...
             AddFont(AvailableFonts.ConsolasItalics);
             AddFont(AvailableFonts.ConsolasBold);
 
@@ -38,6 +34,8 @@ namespace CosmicCrowGames.Core.Fonts
         /// <param name="fontname">the filename of the .ttf without the extension</param>
         public static void AddFont(string fontname)
         {
+            //NOTE: ideally just one font system would be ideal, but although you can add multiple fonts, i can see no way of selecting fonts without knowing the font atlas (and the font atlas collection is null anyway)
+            // Could just grab source and expand on the font, but for now this is easy and relatively low cost solution (except for some extra memory usage i guess?)
             string fontPath = "Content/Fonts/";
             FontSystem fontSystem = new FontSystem();
             fontSystem.AddFont(File.ReadAllBytes(Path.Combine(fontPath, fontname + ".TTF")));

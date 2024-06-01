@@ -4,12 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Dev/Monogame/Projects/CrowEngine/Content/Fonts/Consolas.spritefont</File>
     <File>F:/Dev/Monogame/Projects/CrowEngine/Content/Images/book bg.png</File>
     <File>F:/Dev/Monogame/Projects/CrowEngine/Content/Images/Square.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

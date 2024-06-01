@@ -7,7 +7,7 @@
         "name": "Debug",
         "type": "coreclr",
         "request": "launch",
-        "preLaunchTask": "BuildGame",
+        "preLaunchTask": "Debug Build",
         "program": "${workspaceFolder}/bin/Debug/net6.0/CrowEngine.dll",
         "cwd": "${workspaceFolder}",
         "args": [],

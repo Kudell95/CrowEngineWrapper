@@ -5,6 +5,8 @@ using System;
 using CosmicCrowGames.Core.Scenes;
 using CosmicCrowGames.Core.Tweening;
 using CosmicCrowGames.Core.Fonts;
+using FontStashSharp;
+using FontStashSharp.RichText;
 
 namespace CosmicCrowGames.Core;
 
@@ -14,7 +16,7 @@ public class GameWrapper : Game
     public SpriteBatch MainSpriteBatch {get; private set;}
     private FrameCounter _frameCounter = new FrameCounter();
 
-    private SpriteFont _spriteFont;
+    private SpriteFontBase _spriteFont;
     
     public static GameWrapper Main;
 
@@ -26,6 +28,8 @@ public class GameWrapper : Game
     public SceneTransitionManager SceneTransitionManager { get; private set; }
 
     public ResolutionScaleManager ScreenScaleManager { get; private set; }
+
+    RichTextLayout rtl;
 
     public GameWrapper()
     {
@@ -41,6 +45,12 @@ public class GameWrapper : Game
         Tweener = Tweener.Instance;
 
         FontManager.Initialize();
+        _spriteFont = FontManager.GetFont(AvailableFonts.ConsolasItalics,26);
+
+        rtl = new RichTextLayout{
+            Font = _spriteFont,
+            Text = "Test",
+        };
         
         _graphics = new GraphicsDeviceManager(this)
         {
@@ -60,6 +70,8 @@ public class GameWrapper : Game
         
         Window.ClientSizeChanged += OnClientSizeChanged;
 
+
+
     }
 
     protected override void Initialize()
@@ -71,7 +83,6 @@ public class GameWrapper : Game
     protected override void LoadContent()
     {
         MainSpriteBatch = new SpriteBatch(GraphicsDevice);
-        _spriteFont = Content.Load<SpriteFont>("Fonts/Consolas");
 
         SceneManager = new SceneManager(GraphicsDevice,MainSpriteBatch);
         // SceneManager.AddScenes(SceneFactory.CreateScenes(GraphicsDevice));    
@@ -87,12 +98,7 @@ public class GameWrapper : Game
     }
 
     protected override void Update(GameTime gameTime)
-    {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // TODO: Add your update logic here
-        // _entityManager.Update(gameTime);
+    {     
         SceneManager?.Update(gameTime);
         SceneTransitionManager?.Update(gameTime);
         Tweener?.Update(gameTime);
@@ -118,11 +124,12 @@ public class GameWrapper : Game
 
          _frameCounter.Update(deltaTime);
 
-         var fps = string.Format("FPS: {0}", _frameCounter.AverageFramesPerSecond);
-
+        var fps = string.Format("FPS: /c[red]{0}", _frameCounter.AverageFramesPerSecond);
+        rtl.Text = fps;
 
         MainSpriteBatch.Begin();
-        MainSpriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
+        // // MainSpriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
+        rtl.Draw(MainSpriteBatch, new Vector2(1,1), Color.Gray);
         MainSpriteBatch.End();
         base.Draw(gameTime);
     }
@@ -136,6 +143,8 @@ public class GameWrapper : Game
     {
         // base.OnClientSizeChanged(sender, e);
         ScreenScaleManager.UpdateScaleMatrix();
+
+
     }
 
 

@@ -35,6 +35,10 @@
     <Content Include="Src\**" />   
     <Compile Include="Src\**" />
   </ItemGroup>
+
+  <ItemGroup>
+	<Folder Include="Content\**" CopyToOutputDirectory="PreserveNewest"/>
+  </ItemGroup>
   <!--TODO: https://stackoverflow.com/questions/44374074/copy-files-to-output-directory-using-csproj-dotnetcore set the fmodL dll's to only copy in a debug build.-->
   <ItemGroup>
 	  <None Update="fmod.dll">

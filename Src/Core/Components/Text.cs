@@ -1,6 +1,7 @@
 using System;
 using CosmicCrowGames.Core.Fonts;
 using FontStashSharp;
+using FontStashSharp.RichText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -20,6 +21,8 @@ namespace CosmicCrowGames.Core.Components.UI
         public TextVerticalAlignment VerticalAlignment = TextVerticalAlignment.Center;
 
         public TextHorizontalAlignment HorizontalAlignment = TextHorizontalAlignment.Center;
+
+        private RichTextLayout rtl;
 
         public Text()
         {
@@ -50,13 +53,12 @@ namespace CosmicCrowGames.Core.Components.UI
         public override void Draw(GameTime gameTime)
         {
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(_font, TextValue, GetPosition(), TextColour);
+            rtl.Draw(_spriteBatch, GetPosition(), TextColour);
             _spriteBatch.End();
         }
 
         public override void Initialize()
         {
-            // Font = GameWrapper.Main.Content.Load<SpriteFont>("Fonts/Consolas");
             SetFont(_fontName);
             
             _spriteBatch = GameWrapper.Main.MainSpriteBatch;
@@ -69,6 +71,11 @@ namespace CosmicCrowGames.Core.Components.UI
                     _textBounds = sprite.ImageRectangle;
                 }
             }
+            
+            rtl = new RichTextLayout{
+                Font = _font,
+                Text = TextValue
+            };
         }
 
         public Text SetFont(string font = "")
