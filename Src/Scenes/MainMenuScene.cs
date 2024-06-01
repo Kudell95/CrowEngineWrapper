@@ -5,6 +5,7 @@ using CosmicCrowGames.Core.Components;
 using CosmicCrowGames.Core.Components.UI;
 using CosmicCrowGames.Core.Scenes;
 using CosmicCrowGames.Core.Tweening;
+using Microsoft.Win32.SafeHandles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using UntitledCardGame.Components;
@@ -79,7 +80,8 @@ namespace UntitledCardGame.Scenes
             });
         }
 
-
+        //TODO: move this function to a UI utility class or something similar
+        //or maybe button should be it's own class.
         GUIEntity BuildButton(Vector2 position, Vector2 Bounds, string text, Color color, Color fontColor, AnchorPoint anchorPoint, Action OnClickAction)
         {
             GUIEntity button = (GUIEntity)Instantiate(new GUIEntity(position, SpriteBatch));
@@ -91,30 +93,27 @@ namespace UntitledCardGame.Scenes
             Color ButtonDefaultColor = Color.White;
 
             Color ButtonPressedColor = Color.DarkGray;
-
-            button.GetComponent<Sprite2D>().SpriteColor = Color.White;
-            Text textObject = new Text();
-            textObject.TextColour = fontColor;
-            textObject.TextValue = text;
-            textObject.SetFontSize(70);
+            Sprite2D sprite = button.GetComponent<Sprite2D>();
+            sprite.SpriteColor = Color.White;
+            Text textObject = new Text(text,sprite.ImageRectangle, 70).SetColour(fontColor);
             button.AddComponent(textObject);
             button.Active = true;
             button.AddComponent(new Button(OnClickAction));
 
             button.GetComponent<Button>().OnMouseEnter += ()=>{
-                button.GetComponent<Sprite2D>().SpriteColor = ButtonEntryColor;
+                sprite.SpriteColor = ButtonEntryColor;
             };
 
             button.GetComponent<Button>().OnMouseLeave += ()=>{
-                button.GetComponent<Sprite2D>().SpriteColor = ButtonDefaultColor;
+                sprite.SpriteColor = ButtonDefaultColor;
             };
 
             button.GetComponent<Button>().OnMouseButtonDown += ()=>{
-                button.GetComponent<Sprite2D>().SpriteColor = ButtonPressedColor;
+                sprite.SpriteColor = ButtonPressedColor;
             };
 
             button.GetComponent<Button>().OnMouseButtonUp += ()=>{
-                button.GetComponent<Sprite2D>().SpriteColor = ButtonEntryColor;
+                sprite.SpriteColor = ButtonEntryColor;
             };
 
 

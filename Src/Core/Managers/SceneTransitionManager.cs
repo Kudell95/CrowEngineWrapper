@@ -36,7 +36,7 @@ namespace CosmicCrowGames.Core{
             ScreenBackground.AddComponent(new Sprite2D(GameWrapper.Main.Content.Load<Texture2D>("Images/Square"),0));
             ScreenBackground.AddProp(EntityProperty.Background);
             Sprite2D sprite = ScreenBackground.GetComponent<Sprite2D>();
-
+            
             sprite.SpriteColor = Color.Transparent;
             sprite.UseRectangle = true;
             sprite.ImageRectangle = new Rectangle(0, 0, 2560, 1440);
