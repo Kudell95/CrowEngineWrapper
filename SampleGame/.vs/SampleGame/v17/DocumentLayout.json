@@ -1,0 +1,124 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04BAED69-C74F-4A03-BAC6-BDB6C9F7B9A4}|..\\Engine\\CrowEngine.csproj|e:\\dev\\monogame\\projects\\crowengine\\engine\\src\\gamewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04BAED69-C74F-4A03-BAC6-BDB6C9F7B9A4}|..\\Engine\\CrowEngine.csproj|e:\\dev\\monogame\\projects\\crowengine\\engine\\crowengine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\samplegame.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:samplegame.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameWrapper.cs",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\Engine\\Src\\GameWrapper.cs",
+              "RelativeDocumentMoniker": "..\\Engine\\Src\\GameWrapper.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\Engine\\Src\\GameWrapper.cs",
+              "RelativeToolTip": "..\\Engine\\Src\\GameWrapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T05:15:45.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CrowEngine",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\Engine\\CrowEngine.csproj",
+              "RelativeDocumentMoniker": "..\\Engine\\CrowEngine.csproj",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\Engine\\CrowEngine.csproj",
+              "RelativeToolTip": "..\\Engine\\CrowEngine.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-18T05:12:41.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainMenuScene.cs",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\MainMenuScene.cs",
+              "RelativeDocumentMoniker": "Src\\MainMenuScene.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\MainMenuScene.cs",
+              "RelativeToolTip": "Src\\MainMenuScene.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T05:10:45.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Program.cs",
+              "RelativeDocumentMoniker": "Src\\Program.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Program.cs",
+              "RelativeToolTip": "Src\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T05:10:42.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game1.cs",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Game1.cs",
+              "RelativeDocumentMoniker": "Src\\Game1.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Game1.cs",
+              "RelativeToolTip": "Src\\Game1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T05:10:41.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SampleGame",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\SampleGame.csproj",
+              "RelativeDocumentMoniker": "SampleGame.csproj",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\SampleGame.csproj",
+              "RelativeToolTip": "SampleGame.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-18T05:06:02.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

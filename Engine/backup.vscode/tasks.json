@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks":[{
+        "label": "Debug Build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+                "build",
+                "${workspaceFolder}/CrowEngine.csproj"
+            ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "Run-NoDebugger",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/CrowEngine.csproj"
+            ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "Release Build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+                "build",
+                "${workspaceFolder}/CrowEngine.csproj",
+                "-c",
+                "Release"
+            ],
+        "problemMatcher": "$msCompile"
+    }
+
+]
+}
