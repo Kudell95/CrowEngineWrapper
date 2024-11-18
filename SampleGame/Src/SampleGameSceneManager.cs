@@ -1,9 +1,4 @@
-
-using System.Collections.Generic;
 using CosmicCrowGames.Core.Scenes;
-using Microsoft.Xna.Framework.Graphics;
-using CosmicCrowGames.Core.Scenes;
-using CosmicCrowGames.Core;
 using SampleGame.Scenes;
 using CosmicCrowGames.Enums;
 

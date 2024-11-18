@@ -1,12 +1,9 @@
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.csproj.AssemblyReference.cache
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.GeneratedMSBuildEditorConfig.editorconfig
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.AssemblyInfoInputs.cache
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.AssemblyInfo.cs
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.csproj.CoreCompileInputs.cache
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.sourcelink.json
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Fonts\File.xnb
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Images\book bg.xnb
-E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Images\Square.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Fonts\Abadi.ttf
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Fonts\CONSOLAB.TTF
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Fonts\Consolas.spritefont
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Fonts\Consolas.ttf
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Images\book bg.png
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Images\Square.png
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\SampleGame.exe
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\SampleGame.deps.json
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\SampleGame.runtimeconfig.json
@@ -30,9 +27,34 @@ E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\runtimes\osx\nat
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\runtimes\win-x64\native\SDL2.dll
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\CrowEngine.dll
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\CrowEngine.pdb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.csproj.AssemblyReference.cache
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.AssemblyInfoInputs.cache
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.AssemblyInfo.cs
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.csproj.CoreCompileInputs.cache
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.sourcelink.json
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.csproj.Up2Date
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.dll
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\refint\SampleGame.dll
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.pdb
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\SampleGame.genruntimeconfig.cache
 E:\Dev\Monogame\Projects\CrowEngine\SampleGame\obj\Debug\net8.0\ref\SampleGame.dll
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Fonts\File.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Images\book bg.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Images\Square.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\bin\DesktopGL\Content\Fonts\File.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\bin\DesktopGL\Content\Images\book bg.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\bin\DesktopGL\Content\Images\Square.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\bin\DesktopGL\Images\book bg.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\bin\DesktopGL\Images\Square.xnb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\Content.mgcb
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\.mgstats
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\Images\book bg.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\Images\Square.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\net6.0\Content\.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\net6.0\Content\.mgstats
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\net6.0\Content\Fonts\File.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\net6.0\Content\Images\book bg.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\DesktopGL\net6.0\Content\Images\Square.mgcontent
+E:\Dev\Monogame\Projects\CrowEngine\SampleGame\bin\Debug\net8.0\Content\obj\Windows\.mgstats

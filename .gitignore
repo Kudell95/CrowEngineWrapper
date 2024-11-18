@@ -13,3 +13,4 @@ SampleGame/.vs/SampleGame/FileContentIndex/270af522-85e0-4b2a-b4ae-cef631289465.
 SampleGame/.vs/SampleGame/FileContentIndex/1e04ec2b-15d5-4d8f-8730-91c52258a7b8.vsidx
 SampleGame/.vs/SampleGame/DesignTimeBuild/.dtbcache.v2
 SampleGame/.config/dotnet-tools.json
+*.vsidx
