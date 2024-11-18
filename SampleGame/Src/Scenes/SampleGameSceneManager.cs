@@ -1,13 +1,11 @@
 using CosmicCrowGames.Core.Scenes;
 using SampleGame.Scenes;
-using CosmicCrowGames.Enums;
+using SampleGame.Enums;
 
 namespace SampleGame;
 
 public class SampleGameSceneManager : SceneManager
 {
-
-
         public void LoadScene(SceneType sceneType)
         {
             if(!SceneFactory.SupportedSceneTypes.Contains(sceneType))
@@ -22,8 +20,6 @@ public class SampleGameSceneManager : SceneManager
 
             CurrentScene.OnSceneLoaded();
 
-            // unload current scene.
-            //
         }
 
 }

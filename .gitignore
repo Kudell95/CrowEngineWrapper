@@ -18,3 +18,19 @@ SampleGame/.config/dotnet-tools.json
 /SampleGame/bin
 /SampleGame/.vs
 /SampleGame/bin
+SampleGame/.vs/SampleGame/v17/DocumentLayout.json
+SampleGame/bin/Debug/net8.0/Content/bin/DesktopGL/Content/Images/book bg.xnb
+SampleGame/bin/Debug/net8.0/Content/Content.mgcb
+SampleGame/bin/Debug/net8.0/Content/Images/book bg.png
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/.mgcontent
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/.mgstats
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/Images/Square.mgcontent
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/net6.0/Content/.mgcontent
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/net6.0/Content/.mgstats
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/net6.0/Content/Images/book bg.mgcontent
+SampleGame/bin/Debug/net8.0/Content/obj/DesktopGL/net6.0/Content/Images/Square.mgcontent
+SampleGame/bin/Debug/net8.0/CrowEngine.dll
+SampleGame/bin/Debug/net8.0/CrowEngine.pdb
+SampleGame/bin/Debug/net8.0/SampleGame.dll
+SampleGame/bin/Debug/net8.0/SampleGame.exe
+SampleGame/bin/Debug/net8.0/SampleGame.pdb

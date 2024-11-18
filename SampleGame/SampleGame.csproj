@@ -24,10 +24,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Src\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\**\*" CopyToOutputDirectory="PreserveNewest"/>
+    <Folder Include="Content\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />

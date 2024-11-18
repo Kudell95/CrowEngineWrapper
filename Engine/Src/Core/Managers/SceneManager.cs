@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using CosmicCrowGames.Enums;
 
 
 namespace CosmicCrowGames.Core.Scenes
@@ -24,7 +23,7 @@ namespace CosmicCrowGames.Core.Scenes
 
     public class SceneManager
     {
-        private Dictionary<SceneType, Scene> _scenes = new Dictionary<SceneType, Scene>();
+        private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
 
         public Scene CurrentScene {get; protected set;}
 
@@ -62,7 +61,7 @@ namespace CosmicCrowGames.Core.Scenes
         }
 
 
-        public virtual SceneManager AddScene(Scene scene, SceneType sceneType){
+        public virtual SceneManager AddScene(Scene scene, string sceneType){
             if(_scenes.ContainsKey(sceneType))
                 return this;
             
@@ -70,11 +69,11 @@ namespace CosmicCrowGames.Core.Scenes
             return this;
         }
 
-        public virtual bool HasScene(SceneType sceneType){
+        public virtual bool HasScene(string sceneType){
             return _scenes.ContainsKey(sceneType);
         }
 
-        public virtual bool RemoveScene(SceneType sceneType){
+        public virtual bool RemoveScene(string sceneType){
             if(!_scenes.ContainsKey(sceneType))
                 return false;
             
@@ -82,7 +81,7 @@ namespace CosmicCrowGames.Core.Scenes
             return true;
         }
 
-        public SceneManager AddScenes(Dictionary<SceneType, Scene> scenes)
+        public SceneManager AddScenes(Dictionary<string, Scene> scenes)
         {
             _scenes = scenes;
 

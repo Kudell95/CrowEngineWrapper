@@ -12,11 +12,4 @@ public enum EntityProperty
     GUIElement
 }
 
-public enum SceneType
-{
-    None,
-    MainMenu,
-    GameScene
-
-}
 }

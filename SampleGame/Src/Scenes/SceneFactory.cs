@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CosmicCrowGames.Core.Scenes;
 using Microsoft.Xna.Framework.Graphics;
-using CosmicCrowGames.Enums;
+using SampleGame.Enums;
 
 namespace SampleGame.Scenes
 {
@@ -21,14 +21,5 @@ namespace SampleGame.Scenes
             }
         }
 
-
-        // public static Dictionary<SceneType, Scene> CreateScenes(GraphicsDevice graphicsDevice){
-        //     Dictionary<SceneType,Scene> scenes = new Dictionary<SceneType, Scene>
-        //     {
-        //         { SceneType.MainMenu, new MainMenuScene(graphicsDevice, ) },
-        //     };
-
-        //     return scenes;
-        // }
     }
 }

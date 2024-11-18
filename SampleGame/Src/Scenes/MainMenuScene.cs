@@ -5,10 +5,8 @@ using CosmicCrowGames.Core.Components;
 using CosmicCrowGames.Core.Components.UI;
 using CosmicCrowGames.Core.Scenes;
 using CosmicCrowGames.Core.Tweening;
-using Microsoft.Win32.SafeHandles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using CosmicCrowGames.Enums;
 
 namespace SampleGame.Scenes
 {
@@ -119,12 +117,10 @@ namespace SampleGame.Scenes
         public override void OnSceneUnloaded()
         {            
             base.OnSceneUnloaded();
-            //unload content
         }
 
         public override void Update(GameTime gameTime)
         {
-            // GraphicsDevice.Clear(Color.SkyBlue);
         }
         
 
