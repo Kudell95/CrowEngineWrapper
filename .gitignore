@@ -16,3 +16,5 @@ SampleGame/.config/dotnet-tools.json
 *.vsidx
 /SampleGame/obj
 /SampleGame/bin
+/SampleGame/.vs
+/SampleGame/bin
