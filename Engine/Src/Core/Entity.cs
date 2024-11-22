@@ -29,7 +29,7 @@ public abstract class Entity
     #region  Properties
     public bool Active {
         get { return _active; }
-        set { _active = value;}        
+        protected set { _active = value;}        
     }
 
     public Transform2D transform;
@@ -56,6 +56,7 @@ public abstract class Entity
         _id = Guid.NewGuid();
         // onEntityCreated?.Invoke(this);
         Name = this.GetType().Name;
+        Active = true;
     }
 
     protected Entity(Vector2 position) : this()

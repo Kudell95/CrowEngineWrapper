@@ -103,7 +103,7 @@ namespace CosmicCrowGames.Core
                 onUpdate -= entity.Update;
                 onDraw -= entity.Draw;
                 //TODO: need to look into disposing and ensure we are actually unloading resources here, no point leaving a scene loaded in memory. and if we reload we want that shit fresh...
-                entity.Active = false;
+                entity.SetEnabled(false);
                 entity.Destroy();
             }
 

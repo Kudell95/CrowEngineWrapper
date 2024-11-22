@@ -6,8 +6,11 @@ namespace CosmicCrowGames.Core
 {
     public class MouseInteractionHelper
     {
+        private Rectangle InteractionRectangle;
+        private bool m_IsMouseOver;
+        
+        
         public Vector2 Bounds;
-        public Rectangle InteractionRectangle;
 
         public Action OnMouseOver;
         
@@ -20,7 +23,6 @@ namespace CosmicCrowGames.Core
         public Action OnMouseUp;
 
 
-        public bool IsMouseOver;
 
 
         public MouseInteractionHelper(Vector2 position, Vector2 bounds)
@@ -41,7 +43,6 @@ namespace CosmicCrowGames.Core
 
         public void UpdateRectangle(Vector2 position)
         {
-
             InteractionRectangle = new Rectangle((int)position.X, (int)position.Y, (int)InteractionRectangle.Width, (int)InteractionRectangle.Height);
         }
 
@@ -51,7 +52,7 @@ namespace CosmicCrowGames.Core
             if(InteractionRectangle.Contains(Mouse.GetState().Position))
             {
                 //Mouse entering the rectangle for first time.
-                if(IsMouseOver == false)
+                if(m_IsMouseOver == false)
                 {
                     OnMouseEnter?.Invoke();
                 }
@@ -59,7 +60,7 @@ namespace CosmicCrowGames.Core
                     OnMouseOver?.Invoke();
                 }
 
-                IsMouseOver = true;
+                m_IsMouseOver = true;
 
                 if(MouseUserInput.IsLeftClicked){
                     OnMouseDown?.Invoke();
@@ -67,10 +68,10 @@ namespace CosmicCrowGames.Core
                     OnMouseUp?.Invoke();
                 }
             }else{
-                if(IsMouseOver)
+                if(m_IsMouseOver)
                     OnMouseLeave?.Invoke();
                     
-                IsMouseOver = false;
+                m_IsMouseOver = false;
 
             }
         }
