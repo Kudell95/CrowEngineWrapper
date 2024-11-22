@@ -42,6 +42,8 @@ namespace CosmicCrowGames.Core.Transform
         }
 
         public Vector2 Pivot { get; set; }
+        
+        public Entity Entity { get; set; }
 
         public Transform2D Parent { get; private set; }
         public List<Transform2D> Children { get; private set; }
@@ -134,6 +136,9 @@ namespace CosmicCrowGames.Core.Transform
 
         public void AddChild(Transform2D child)
         {
+            //TODO: we should probably add some validation here so we don't cause any problems, i.e. a child shouldn't be able to add a grandparent as a child. Maybe do a check if the target child's children contains the current transform?
+            
+            //if the child already has a parent, remove it so it doesn't end up with two references.
             if (child.Parent != null)
             {
                 child.Parent.Children.Remove(child);

@@ -89,23 +89,6 @@ namespace CosmicCrowGames.Core.Scenes
         }
 
 
-        // public virtual void LoadScene(SceneType sceneType)
-        // {
-        //     if(!CurrentSceneFactory.SupportedSceneTypes.Contains(sceneType))
-        //         return;
-
-        //     if(CurrentScene != null)
-        //     {
-        //         CurrentScene.OnSceneUnloaded(); // may need to await for this... or listen for event.
-        //     }
-            
-        //     CurrentScene = CurrentSceneFactory.CreateScene(sceneType, graphicsDevice, spriteBatch);
-
-        //     CurrentScene.OnSceneLoaded();
-
-        //     // unload current scene.
-        //     //
-        // }
 
         public virtual void LoadScene(Scene scene)
         {

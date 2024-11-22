@@ -52,6 +52,7 @@ public abstract class Entity
     {
         IsDestroyed = false;
         transform = new Transform2D();
+        transform.Entity = this;
         _id = Guid.NewGuid();
         // onEntityCreated?.Invoke(this);
         Name = this.GetType().Name;
@@ -143,6 +144,17 @@ public abstract class Entity
         component.Initialize();
 
         return this;
+    }
+
+
+    public void SetEnabled(bool enabled)
+    {
+        Active = enabled;
+
+        foreach (Transform2D transform in transform.Children)
+        {
+            transform.Entity.SetEnabled(enabled);
+        }
     }
 
 

@@ -130,7 +130,7 @@ namespace CosmicCrowGames.Core
             if(_TweenStarted)
                 return;
 
-            this.Active = true;
+            this.SetEnabled(true);
             if (fade)
             {
                 _TweenStarted = true;
@@ -159,7 +159,7 @@ namespace CosmicCrowGames.Core
                 _TweenStarted = true;
                 Sprite2D sprite2D = GetComponent<Sprite2D>();
                 sprite2D.TweenColor(Color.Transparent, fadeTime, Easing.EaseInOutSine, 0, RepeatType.None).OnComplete(() => {
-                    this.Active = false;
+                    this.SetEnabled(false);
                     _TweenStarted = false;
                 });
             }
@@ -167,7 +167,7 @@ namespace CosmicCrowGames.Core
             {
                 Sprite2D sprite2D = GetComponent<Sprite2D>();
                 sprite2D.CurrentColour = Color.Transparent;
-                this.Active = false;
+                this.SetEnabled(false);
             }
         }
     }

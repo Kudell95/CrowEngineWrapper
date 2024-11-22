@@ -8,7 +8,7 @@ namespace CosmicCrowGames.Core.Components
 
     public class Renderer2D : Component
     {
-        private SpriteBatch _spriteBatch;
+        protected SpriteBatch _spriteBatch;
         public Renderer2D(){
             
         }
@@ -56,6 +56,7 @@ namespace CosmicCrowGames.Core.Components
             _spriteBatch.Draw(texture, Entity.transform.Position,rectangle, color, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
             _spriteBatch.End();
         }
+        
 
 
         public override void Destroy()
