@@ -30,17 +30,28 @@ public class GameWrapper : Game
 
     RichTextLayout rtl;
 
+
+    private bool m_Resizing;
+
     public int ScreenWidth = 1920;
     public int ScreenHeight = 1080;
 
-    public GameWrapper(int width, int height)
+    public GameWrapper(int width, int height) 
     {
         ScreenWidth = width;
         ScreenHeight = height;
+        
+        SetupGame();
     }
 
 
     public GameWrapper()
+    {
+        SetupGame();
+
+    }
+
+    private void SetupGame()
     {
         //we are gonna make a singleton for the game wrapper, as this will contain references to things like the service locator etc...
         if(Main == null)
@@ -68,7 +79,7 @@ public class GameWrapper : Game
             IsFullScreen = false,
             GraphicsProfile = GraphicsProfile.HiDef
         };
-        this.Window.IsBorderless = false;
+        _graphics.ApplyChanges();
         Window.AllowUserResizing = true;
         // this.IsFixedTimeStep = false; //-- Unlimited (needs testing for tearing.)
 
@@ -77,9 +88,9 @@ public class GameWrapper : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
         
-        Window.ClientSizeChanged += OnClientSizeChanged;
-
-    } 
+        this.Window.ClientSizeChanged += OnClientSizeChanged;
+    }
+    
 
     protected override void Initialize()
     {
@@ -94,14 +105,12 @@ public class GameWrapper : Game
         GlobalEntityManager.Initialize();
 
         ScreenScaleManager = new ResolutionScaleManager(_graphics,ScreenWidth,ScreenHeight); 
-        ScreenScaleManager.UpdateScaleMatrix();
+        ScreenScaleManager.ApplyResolutionSettings();
     }
 
     protected override void LoadContent()
     {
         MainSpriteBatch = new SpriteBatch(GraphicsDevice);
-
-       
     }
 
     protected override void Update(GameTime gameTime)
@@ -119,9 +128,10 @@ public class GameWrapper : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
         // _entityManager.Draw(gameTime);
-
+        GraphicsDevice.Viewport = ScreenScaleManager.ScreenViewport;
+        
         SceneManager?.Draw(gameTime);
         SceneTransitionManager?.Draw(gameTime);
         GlobalEntityManager?.Draw(gameTime);
@@ -149,9 +159,13 @@ public class GameWrapper : Game
     protected void OnClientSizeChanged(object sender, EventArgs e)
     {
         // base.OnClientSizeChanged(sender, e);
-        ScreenScaleManager.UpdateScaleMatrix();
 
-
+        if (!m_Resizing && Window.ClientBounds.Width > 0 && Window.ClientBounds.Height > 0)
+        {
+            m_Resizing = true;
+            ScreenScaleManager.ApplyResolutionSettings();
+            m_Resizing = false;
+        }
     }
 
 

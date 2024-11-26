@@ -2,22 +2,22 @@ namespace CrowEngine.Core.fsm;
 
 public class StateMachine
 {
-    public State CurrentState { get; set; }
+     private State m_CurrentState { get; set; }
 
     
     public void Update(float deltaTime)
     {
-        CurrentState?.Update(deltaTime);
+        m_CurrentState?.Update(deltaTime);
     }
 
 
     public void ChangeState(State newState)
     {
-        if(CurrentState != null)
-            CurrentState.OnExit();
+        if(m_CurrentState != null)
+            m_CurrentState.OnExit();
         
-        CurrentState = newState;
+        m_CurrentState = newState;
         
-        CurrentState?.OnEnter();
+        m_CurrentState?.OnEnter();
     }
 }

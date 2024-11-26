@@ -52,9 +52,7 @@ namespace CosmicCrowGames.Core.Components.UI
 
         public override void Draw(GameTime gameTime)
         {
-            _spriteBatch.Begin();
-            rtl.Draw(_spriteBatch, GetPosition(), TextColour);
-            _spriteBatch.End();
+            Entity.GetComponent<Renderer2D>().RenderItem(rtl,GetPosition(), TextColour);
         }
 
         public override void Initialize()

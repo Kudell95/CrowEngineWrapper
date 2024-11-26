@@ -34,6 +34,7 @@ namespace CosmicCrowGames.Core.Components
 
         public AnchorPoint CurrentPivotAnchor = AnchorPoint.None;
 
+
         public Sprite2D() : base(){}
 
         public Sprite2D(Texture2D texture) : base()

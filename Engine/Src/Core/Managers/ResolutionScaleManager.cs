@@ -10,54 +10,60 @@ namespace CosmicCrowGames.Core
     {
         private GraphicsDeviceManager graphics;
         private Matrix scaleMatrix;
-        private int virtualWidth;
-        private int virtualHeight;
-        private int screenWidth;
-        private int screenHeight;
+        private int m_VirtualWidth;
+        private int m_VirtualHeight;
+        private float m_ResolutionWidth;
+        private float m_ResolutionHeight;
+        
+        public Viewport ScreenViewport;
 
-        public ResolutionScaleManager(GraphicsDeviceManager graphics, int virtualWidth, int virtualHeight)
+        public ResolutionScaleManager(GraphicsDeviceManager graphics, int resolutionWidth, int resolutionHeight)
         {
             this.graphics = graphics;
-            this.virtualWidth = virtualWidth;
-            this.virtualHeight = virtualHeight;
+            this.m_ResolutionWidth = resolutionWidth;
+            this.m_ResolutionHeight = resolutionHeight;
             ApplyResolutionSettings();
         }
 
         public void ApplyResolutionSettings()
         {
-            screenWidth = graphics.GraphicsDevice.Viewport.Width;
-            screenHeight = graphics.GraphicsDevice.Viewport.Height;
-            float scaleX = (float)screenWidth / virtualWidth;
-            float scaleY = (float)screenHeight / virtualHeight;
-            float scale = Math.Min(scaleX, scaleY);
-            scaleMatrix = Matrix.CreateScale(scale, scale, 1f);
+            float screenWidth = graphics.GraphicsDevice.PresentationParameters.BackBufferWidth;
+            float screenHeight = graphics.GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+            if (screenWidth /  m_ResolutionWidth > screenHeight / m_ResolutionHeight)
+            {
+                float aspect = screenHeight / m_ResolutionHeight;
+                
+                m_VirtualWidth = (int)(m_ResolutionWidth * aspect);
+                m_VirtualHeight = (int)screenHeight;
+            }
+            else
+            {
+                float aspect = screenWidth / m_ResolutionWidth;
+                m_VirtualWidth = (int)screenWidth;
+                m_VirtualHeight = (int)(aspect * m_ResolutionHeight);
+            }
+            
+            
+            scaleMatrix = Matrix.CreateScale((float)(m_VirtualWidth / m_ResolutionWidth));
+
+            ScreenViewport = new Viewport
+            {
+                X = 0,
+                Y = 0,
+                Width =  (int)screenWidth,
+                Height = (int)screenHeight,
+                MinDepth = 0,
+                MaxDepth = 1
+            };
+
         }
 
         public Matrix GetScaleMatrix()
         {
             return scaleMatrix;
         }
-        public void UpdateScaleMatrix()
-        {
-            int screenWidth = graphics.GraphicsDevice.Viewport.Width;
-            int screenHeight = graphics.GraphicsDevice.Viewport.Height;
-
-            float scaleX = (float)screenWidth / virtualWidth;
-            float scaleY = (float)screenHeight / virtualHeight;
-            float scale = Math.Min(scaleX, scaleY);
-
-            // scaleMatrix = Matrix.CreateScale(scale, scale, 1f);
-
-            // // Calculate the viewport dimensions while maintaining aspect ratio
-            // int viewportWidth = (int)(virtualWidth * scale);
-            // int viewportHeight = (int)(virtualHeight * scale);
-
-            // // Center the viewport within the window
-            // int viewportX = (screenWidth - viewportWidth) / 2;
-            // int viewportY = (screenHeight - viewportHeight) / 2;
-
-            // graphics.GraphicsDevice.Viewport = new Viewport(viewportX, viewportY, viewportWidth, viewportHeight);
-        }
+       
 
     }
 }

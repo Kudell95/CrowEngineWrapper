@@ -86,7 +86,8 @@ public abstract class Entity
     public virtual void Destroy()
     {
         IsDestroyed = true;
-        for(int i = _components.Count-1; i >= 0; i--){
+        for(int i = _components.Count-1; i >= 0; i--)
+        {
             _components[i].Destroy();
         }
     }
@@ -148,7 +149,7 @@ public abstract class Entity
     }
 
 
-    public void SetEnabled(bool enabled)
+    public virtual void SetEnabled(bool enabled)
     {
         Active = enabled;
 

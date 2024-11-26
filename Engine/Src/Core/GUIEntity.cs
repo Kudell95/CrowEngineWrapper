@@ -25,13 +25,13 @@ namespace CosmicCrowGames.Core
                 return _width;
             }
             set{
-                _width = value;
-                if(HasComponent<Sprite2D>())
+                if(value != _width && HasComponent<Sprite2D>())
                 {
                     Sprite2D sprite2D = GetComponent<Sprite2D>();
-                    sprite2D.ImageRectangle = new Rectangle(0, 0, (int)_width, (int)_height);
+                    sprite2D.ImageRectangle = new Rectangle(0, 0, (int)value, (int)_height);
                     sprite2D.SetPivot(sprite2D.CurrentPivotAnchor);
                 }             
+                _width = value;
             }
         }
 
@@ -40,13 +40,13 @@ namespace CosmicCrowGames.Core
                 return _height;
             }
             set{
-                _height = value;
-                if(HasComponent<Sprite2D>())
+                if(value != _height && HasComponent<Sprite2D>())
                 {
                     Sprite2D sprite2D = GetComponent<Sprite2D>();
-                    sprite2D.ImageRectangle = new Rectangle(0, 0, (int)_width, (int)_height);
+                    sprite2D.ImageRectangle = new Rectangle(0, 0, (int)_width, (int)value);
                     sprite2D.SetPivot(sprite2D.CurrentPivotAnchor);
-                }             
+                }
+                _height = value;
             }
         }
 
