@@ -19,6 +19,8 @@ namespace CosmicCrowGames.Core.Components
 
         private Color _spriteColour;
 
+        public bool IsGUI = false;
+
         public Color SpriteColor {
             get {
                 return _spriteColour;
@@ -66,6 +68,8 @@ namespace CosmicCrowGames.Core.Components
                 Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, CurrentColour, layerDepth);
             else
                 Entity.TryGetComponent<Renderer2D>()?.RenderItem(Texture, Entity.transform.Position, CurrentColour, ImageRectangle, layerDepth);
+
+            
         }
         
         
@@ -75,6 +79,8 @@ namespace CosmicCrowGames.Core.Components
 
             // throw new System.NotImplementedException();   
 
+            GameWrapper.Main.OnDraw += onDrawListener;
+            
             if(!Entity.HasComponent<Renderer2D>())
                 Console.WriteLine("WARNING: Entity does not have a Renderer2D component");
         }
@@ -120,6 +126,24 @@ namespace CosmicCrowGames.Core.Components
             return this;
         }
 
+        private void onDrawListener()
+        {
+            if(!Entity.Active)
+                return;
+            
+            if (IsGUI)
+            {
+                if(!UseRectangle)
+                    Console.WriteLine("Warning: GUI element is not using a rectangle, this is not recommended and will not work as intended.");
+
+                if (Entity is GUIEntity entity)
+                {
+                    Entity.TryGetComponent<Renderer2D>()?.RenderGUIBuffer(Texture,
+                        entity.UniqueColour, ImageRectangle, layerDepth);
+                }
+            }
+        }      
+
         public override void Destroy()
         {
             base.Destroy();
@@ -133,6 +157,7 @@ namespace CosmicCrowGames.Core.Components
             Texture = null;
             base.Dispose();
             
+            GameWrapper.Main.OnDraw -= onDrawListener;
         }
     }
 }

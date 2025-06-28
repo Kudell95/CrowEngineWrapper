@@ -4,14 +4,34 @@ using CosmicCrowGames.Core.Tweening;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CosmicCrowGames.Enums;
+using CrowEngine.Core.Helpers;
 
 namespace CosmicCrowGames.Core
 {
     public class GUIEntity : Entity
     {
+        private static int m_NextId = 1;
+        
         private SpriteBatch _spritebatch;
 
         public Texture2D Texture;
+
+        public Color UniqueColour {get;private set;}
+        
+        //Each GUI Entity has:
+        // - a new rectangle that spans the bounds of the entity.
+        // - a guid.
+        // - a corresponding UNIQUE colour
+        // 
+        // mouse will sample the pixel it's under (maybe only when it moves).
+        // interaction manager will store the current selected element.
+
+        private int m_ElementID = -1;
+
+        public Action OnMouseEnter;
+        public Action OnMouseButtonDown;
+        public Action OnMouseButtonUp;
+        public Action OnMouseLeave;
 
         private float _width;
         private float _height;
@@ -19,6 +39,8 @@ namespace CosmicCrowGames.Core
         public bool FillScreen;
 
         bool _TweenStarted = false;
+
+        private bool m_mouseOverElement;
 
         public float Width {
             get{
@@ -64,11 +86,21 @@ namespace CosmicCrowGames.Core
                     Console.WriteLine("WARNING! No Texture set for GUIEntity");
                 }
             }        
-        
             
-
+            //setup ID/unique colour
+            m_ElementID = m_NextId++;
+            UniqueColour = ColourHelpers.ColorFromID(m_ElementID);
+            Console.WriteLine($"Creating GUI element with id: {m_ElementID} colour: {UniqueColour.ToVector3()}");
+            GameWrapper.Main.MGUIInteractionMGR.OnMouseOver += mouseEnterListener;
+            GameWrapper.Main.MGUIInteractionMGR.OnMouseLeave += mouseLeaveListener;
+            
+            
             AddComponent(new Renderer2D(_spritebatch));
-            Sprite2D sprite2D = new Sprite2D(Texture);
+            var sprite2D = new Sprite2D(Texture)
+            {
+                IsGUI = true
+            };
+            
             AddComponent(sprite2D);
             AddComponent(new AnchoredTransform(GameWrapper.Main.GraphicsDevice));
             sprite2D.SetPivot(AnchorPoint.MiddleCenter);
@@ -100,11 +132,21 @@ namespace CosmicCrowGames.Core
                 Width = GameWrapper.Main.GraphicsDevice.Viewport.Width;
                 Height = GameWrapper.Main.GraphicsDevice.Viewport.Height;
             }
+
+            if (m_mouseOverElement)
+            {
+                if(MouseUserInput.IsLeftClicked){
+                    OnMouseButtonDown?.Invoke();
+                }else if(MouseUserInput.IsLeftJustReleased){
+                    OnMouseButtonUp?.Invoke();
+                }
+            }
         }
 
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
+            
         }
 
         public override Entity AddComponent(Component component)
@@ -146,6 +188,25 @@ namespace CosmicCrowGames.Core
                 Sprite2D sprite2D = GetComponent<Sprite2D>();
                 sprite2D.CurrentColour = sprite2D.SpriteColor;
             }
+        }
+
+        private void mouseEnterListener(int id)
+        {
+            if (id != m_ElementID || m_mouseOverElement)
+                return;
+
+            m_mouseOverElement = true;
+            OnMouseEnter?.Invoke();
+        }
+
+        private void mouseLeaveListener(int id)
+        {
+            if (id != m_ElementID || !m_mouseOverElement)
+                return;
+
+            m_mouseOverElement = false;
+            OnMouseLeave?.Invoke();
+
         }
 
         public void DisableGUI(bool fade = true, float fadeTime = 0.2f)

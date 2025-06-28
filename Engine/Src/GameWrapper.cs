@@ -4,6 +4,7 @@ using System;
 using CosmicCrowGames.Core.Scenes;
 using CosmicCrowGames.Core.Tweening;
 using CosmicCrowGames.Core.Fonts;
+using CrowEngine.Core.Managers;
 using FontStashSharp;
 using FontStashSharp.RichText;
 
@@ -14,6 +15,7 @@ public class GameWrapper : Game
     private GraphicsDeviceManager _graphics;
     public SpriteBatch MainSpriteBatch {get; private set;}
     private FrameCounter _frameCounter = new FrameCounter();
+    public RenderTarget2D IDBuffer;
 
     private SpriteFontBase _spriteFont;
     
@@ -27,6 +29,9 @@ public class GameWrapper : Game
     public SceneTransitionManager SceneTransitionManager { get; private set; }
 
     public ResolutionScaleManager ScreenScaleManager { get; private set; }
+    public MouseGuiInteractionManager MGUIInteractionMGR { get; private set; }
+
+    public Action OnDraw;
 
     RichTextLayout rtl;
 
@@ -89,6 +94,8 @@ public class GameWrapper : Game
         IsMouseVisible = true;
         
         this.Window.ClientSizeChanged += OnClientSizeChanged;
+
+        IDBuffer = new RenderTarget2D(_graphics.GraphicsDevice, _graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height);
     }
     
 
@@ -106,6 +113,9 @@ public class GameWrapper : Game
 
         ScreenScaleManager = new ResolutionScaleManager(_graphics,ScreenWidth,ScreenHeight); 
         ScreenScaleManager.ApplyResolutionSettings();
+
+        MGUIInteractionMGR = new MouseGuiInteractionManager();
+        MGUIInteractionMGR.Initialize();
     }
 
     protected override void LoadContent()
@@ -128,6 +138,13 @@ public class GameWrapper : Game
 
     protected override void Draw(GameTime gameTime)
     {
+        GraphicsDevice.SetRenderTarget(IDBuffer);
+        GraphicsDevice.Clear(Color.Transparent);
+        OnDraw?.Invoke();
+        MGUIInteractionMGR?.Draw(gameTime);
+        GraphicsDevice.SetRenderTarget(null);
+        
+        
         GraphicsDevice.Clear(Color.Black);
         // _entityManager.Draw(gameTime);
         GraphicsDevice.Viewport = ScreenScaleManager.ScreenViewport;
@@ -148,7 +165,13 @@ public class GameWrapper : Game
         // // MainSpriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
         rtl.Draw(MainSpriteBatch, new Vector2(1,1), Color.Gray);
         MainSpriteBatch.End();
+        
+       
+                
+        
         base.Draw(gameTime);
+        
+        
     }
 
     /// <summary>

@@ -8,22 +8,12 @@ namespace CosmicCrowGames.Core
     {
         private Rectangle InteractionRectangle;
         private bool m_IsMouseOver;
-        
-        
         public Vector2 Bounds;
-
         public Action OnMouseOver;
-        
         public Action OnMouseEnter;
-
         public Action OnMouseLeave;
-
         public Action OnMouseDown;
-
         public Action OnMouseUp;
-
-
-
 
         public MouseInteractionHelper(Vector2 position, Vector2 bounds)
         {

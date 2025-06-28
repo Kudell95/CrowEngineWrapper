@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace CosmicCrowGames.Core.Components.UI
 {
+    //NOTE: POSSIBLY DEPRECATED.
     public class Button : Component
     {
 
@@ -16,7 +17,7 @@ namespace CosmicCrowGames.Core.Components.UI
         public Action OnMouseEnter {get;set;}
         public Action OnMouseLeave {get;set;}
 
-
+        //TODO:with changes to the GUIEntity, this component may not be needed
 
         public Button(Action onClick) : base(){
             if(Entity != null && Entity.HasComponent<Sprite2D>())

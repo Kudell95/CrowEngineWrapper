@@ -1,3 +1,4 @@
+using System;
 using CosmicCrowGames.Core;
 using FontStashSharp.RichText;
 using Microsoft.Xna.Framework;
@@ -27,7 +28,10 @@ namespace CosmicCrowGames.Core.Components
         public override void Initialize()
         {
             // throw new System.NotImplementedException();
+
         }
+
+       
 
         public override void Update(GameTime gameTime)
         {
@@ -36,27 +40,33 @@ namespace CosmicCrowGames.Core.Components
 
         public void RenderItem(Texture2D texture, Vector2 position, float layerDepth = 0)
         {
-            BeginDraw();
-            _spriteBatch.Draw(texture, Entity.transform.Position, null, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
-            EndDraw();
+            RenderItem(texture,position, Color.White, null, layerDepth);
         }
         
         public void RenderItem(Texture2D texture, Vector2 position, Color color, float layerDepth = 0)
         {
-            BeginDraw();
-            _spriteBatch.Draw(texture, Entity.transform.Position, null, color, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
-            EndDraw();
+            RenderItem(texture,position,color,null, layerDepth);
         }
         public void RenderItem(Texture2D texture, Vector2 position, Rectangle? rectangle = null, float layerDepth = 0)
         {
-            BeginDraw();
-            _spriteBatch.Draw(texture, Entity.transform.Position,rectangle, Color.White, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
-            EndDraw();
+            RenderItem(texture,position, Color.White, rectangle, layerDepth);
         }
         public void RenderItem(Texture2D texture, Vector2 position, Color color, Rectangle? rectangle = null, float layerDepth = 0)
         {
             BeginDraw();
-            _spriteBatch.Draw(texture, Entity.transform.Position,rectangle, color, Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale, SpriteEffects.None, layerDepth);
+            _spriteBatch.Draw(texture, Entity.transform.Position,rectangle, color,
+                Entity.transform.Rotation, Vector2.Zero, Entity.transform.Scale,
+                SpriteEffects.None, layerDepth);
+            EndDraw();
+
+            
+        }
+
+
+        public void RenderGUIBuffer(Texture2D texture,  Color colour, Rectangle rectangle, float layerdepth)
+        {
+            BeginGUIBufferDraw();
+            _spriteBatch.Draw(texture, Entity.transform.Position,rectangle,colour,Entity.transform.Rotation, Vector2.Zero,Entity.transform.Scale,SpriteEffects.None,layerdepth);
             EndDraw();
         }
 
@@ -75,7 +85,15 @@ namespace CosmicCrowGames.Core.Components
             else
                 _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         }
-
+        
+        
+        private void BeginGUIBufferDraw()
+        {
+            if(UseScaling)
+                _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Opaque, samplerState: SamplerState.PointClamp, transformMatrix: GameWrapper.Main.ScreenScaleManager.GetScaleMatrix());
+            else
+                _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Opaque,samplerState: SamplerState.PointClamp);
+        }
         protected void EndDraw()
         {
             _spriteBatch.End();
