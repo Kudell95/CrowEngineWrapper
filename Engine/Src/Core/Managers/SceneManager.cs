@@ -99,6 +99,9 @@ namespace CosmicCrowGames.Core.Scenes
             }
             
             CurrentScene = scene;
+            
+            //this may change, but allow for any other cleanup when a scene has changed. currently, resetting the GUI ID's
+            GameWrapper.Main.OnSceneChanged?.Invoke();
 
             CurrentScene.OnSceneLoaded();
 

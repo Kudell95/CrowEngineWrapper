@@ -10,8 +10,10 @@ public class MouseGuiInteractionManager : Manager
 {
     public int CurrentHoveredGuiId = -1;
 
-    private int m_currentMX = -1, m_currentMY = -1;
+    private int m_currentMX = -1;
+    private int m_currentMY = -1;
 
+    //TODO: probably in the future as only a minor perf hit. But change this to be a dictionary filled with id's
     public Action<int> OnMouseOver;
     public Action<int> OnMouseLeave;
     
@@ -23,10 +25,10 @@ public class MouseGuiInteractionManager : Manager
     public override void Draw(GameTime gameTime)
     {
         base.Update(gameTime);
-
+        
         int mx = Mouse.GetState().X;
         int my = Mouse.GetState().Y;
-        if (mx != m_currentMX || my != m_currentMY)
+        if ((mx != m_currentMX || my != m_currentMY) && IsMouseInWindow(mx,my))
         {
             m_currentMX = mx;
             m_currentMY = my;
@@ -72,5 +74,11 @@ public class MouseGuiInteractionManager : Manager
 
         }
 
+    }
+
+    private bool IsMouseInWindow(int x, int y)
+    {
+        Point pos = new Point(x, y);
+        return GameWrapper.Main.GraphicsDevice.Viewport.Bounds.Contains(pos);
     }
 }

@@ -32,6 +32,7 @@ public class GameWrapper : Game
     public MouseGuiInteractionManager MGUIInteractionMGR { get; private set; }
 
     public Action OnDraw;
+    public Action OnSceneChanged;
 
     RichTextLayout rtl;
 
@@ -103,11 +104,12 @@ public class GameWrapper : Game
     {
         base.Initialize();
         SceneManager = new SceneManager(GraphicsDevice,MainSpriteBatch);
+        
         // SceneManager.AddScenes(SceneFactory.CreateScenes(GraphicsDevice));    
 
         SceneTransitionManager = new SceneTransitionManager(GraphicsDevice, MainSpriteBatch);
-        SceneTransitionManager.Initialize(); 
-
+        SceneTransitionManager.Initialize();
+        
         GlobalEntityManager = new EntityManager(MainSpriteBatch);
         GlobalEntityManager.Initialize();
 
@@ -116,6 +118,9 @@ public class GameWrapper : Game
 
         MGUIInteractionMGR = new MouseGuiInteractionManager();
         MGUIInteractionMGR.Initialize();
+
+        //Cleanup Events
+        OnSceneChanged += GUIEntity.OnSceneChanged;
     }
 
     protected override void LoadContent()
@@ -165,10 +170,6 @@ public class GameWrapper : Game
         // // MainSpriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
         rtl.Draw(MainSpriteBatch, new Vector2(1,1), Color.Gray);
         MainSpriteBatch.End();
-        
-       
-                
-        
         base.Draw(gameTime);
         
         

@@ -17,9 +17,6 @@ public static class ColourHelpers
     
     public static int IDFromColor(Color color)
     {
-        Console.WriteLine($"Converting colour:{color.ToVector3()}");
-        
         return (color.R << 16) | (color.G << 8) | color.B; 
-        
     }
 }

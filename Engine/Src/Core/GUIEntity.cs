@@ -90,7 +90,6 @@ namespace CosmicCrowGames.Core
             //setup ID/unique colour
             m_ElementID = m_NextId++;
             UniqueColour = ColourHelpers.ColorFromID(m_ElementID);
-            Console.WriteLine($"Creating GUI element with id: {m_ElementID} colour: {UniqueColour.ToVector3()}");
             GameWrapper.Main.MGUIInteractionMGR.OnMouseOver += mouseEnterListener;
             GameWrapper.Main.MGUIInteractionMGR.OnMouseLeave += mouseLeaveListener;
             
@@ -230,6 +229,12 @@ namespace CosmicCrowGames.Core
                 sprite2D.CurrentColour = Color.Transparent;
                 this.SetEnabled(false);
             }
+        }
+
+        public static void OnSceneChanged()
+        {
+            //Reset the next id.
+            m_NextId = 1;
         }
     }
 }
