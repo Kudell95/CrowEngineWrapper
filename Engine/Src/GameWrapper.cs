@@ -104,8 +104,6 @@ public class GameWrapper : Game
     {
         base.Initialize();
         SceneManager = new SceneManager(GraphicsDevice,MainSpriteBatch);
-        
-        // SceneManager.AddScenes(SceneFactory.CreateScenes(GraphicsDevice));    
 
         SceneTransitionManager = new SceneTransitionManager(GraphicsDevice, MainSpriteBatch);
         SceneTransitionManager.Initialize();
@@ -121,6 +119,7 @@ public class GameWrapper : Game
 
         //Cleanup Events
         OnSceneChanged += GUIEntity.OnSceneChanged;
+        OnSceneChanged += MGUIInteractionMGR.ClearEntities;
     }
 
     protected override void LoadContent()

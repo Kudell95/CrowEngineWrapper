@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using CosmicCrowGames.Core;
 using CrowEngine.Core.Helpers;
 using Microsoft.Xna.Framework;
@@ -12,14 +14,12 @@ public class MouseGuiInteractionManager : Manager
 
     private int m_currentMX = -1;
     private int m_currentMY = -1;
-
-    //TODO: probably in the future as only a minor perf hit. But change this to be a dictionary filled with id's
-    public Action<int> OnMouseOver;
-    public Action<int> OnMouseLeave;
+    
+    public Dictionary<int, InteractableEntity> Entities = new Dictionary<int, InteractableEntity>();
+    
     
     public override void Initialize()
     {
-        
     }
 
     public override void Draw(GameTime gameTime)
@@ -44,10 +44,10 @@ public class MouseGuiInteractionManager : Manager
                     if (id != CurrentHoveredGuiId)
                     {
                         if (CurrentHoveredGuiId != -1)
-                            OnMouseLeave?.Invoke(CurrentHoveredGuiId);
+                            NotifyOnMouseExit(CurrentHoveredGuiId);
 
                         CurrentHoveredGuiId = id;
-                        OnMouseOver?.Invoke(id);
+                        NotifyOnMouseEnter(id);
                         Console.WriteLine($"Mouse over: id {id}");
                     }
 
@@ -56,7 +56,7 @@ public class MouseGuiInteractionManager : Manager
                 {
                     if (CurrentHoveredGuiId != -1)
                     {
-                        OnMouseLeave?.Invoke(CurrentHoveredGuiId);
+                        NotifyOnMouseExit(CurrentHoveredGuiId);
                         CurrentHoveredGuiId = -1;
                     }
                 }
@@ -66,7 +66,7 @@ public class MouseGuiInteractionManager : Manager
                 Console.WriteLine(ex.Message);
                 if (CurrentHoveredGuiId != -1)
                 {
-                    OnMouseLeave?.Invoke(CurrentHoveredGuiId);
+                    NotifyOnMouseExit(CurrentHoveredGuiId);
                     CurrentHoveredGuiId = -1;
                 }
             }
@@ -76,9 +76,38 @@ public class MouseGuiInteractionManager : Manager
 
     }
 
+    private void NotifyOnMouseEnter(int id)
+    {
+        if (Entities != null && Entities.ContainsKey(id))
+        {
+            Entities[id].MouseEnterListener();
+        }
+    }
+
+    private void NotifyOnMouseExit(int id)
+    {
+        if (Entities != null && Entities.ContainsKey(id))
+        {
+            Entities[id].MouseLeaveListener();
+        }
+    }
+
     private bool IsMouseInWindow(int x, int y)
     {
         Point pos = new Point(x, y);
         return GameWrapper.Main.GraphicsDevice.Viewport.Bounds.Contains(pos);
+    }
+
+    public void ClearEntities()
+    {
+        Entities.Clear();
+    }
+
+    public void LogEntities()
+    {
+        for (int i = 0; i < Entities?.Keys.Count; i++)
+        {
+            Console.WriteLine(Entities.Keys.ElementAt(i));
+        }
     }
 }

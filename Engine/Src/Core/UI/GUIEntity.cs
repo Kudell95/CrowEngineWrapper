@@ -4,19 +4,18 @@ using CosmicCrowGames.Core.Tweening;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CosmicCrowGames.Enums;
+using CrowEngine.Core;
 using CrowEngine.Core.Helpers;
 
 namespace CosmicCrowGames.Core
 {
-    public class GUIEntity : Entity
+    public class GUIEntity : InteractableEntity
     {
-        private static int m_NextId = 1;
         
         private SpriteBatch _spritebatch;
 
         public Texture2D Texture;
 
-        public Color UniqueColour {get;private set;}
         
         //Each GUI Entity has:
         // - a new rectangle that spans the bounds of the entity.
@@ -26,12 +25,8 @@ namespace CosmicCrowGames.Core
         // mouse will sample the pixel it's under (maybe only when it moves).
         // interaction manager will store the current selected element.
 
-        private int m_ElementID = -1;
 
-        public Action OnMouseEnter;
-        public Action OnMouseButtonDown;
-        public Action OnMouseButtonUp;
-        public Action OnMouseLeave;
+        
 
         private float _width;
         private float _height;
@@ -40,7 +35,6 @@ namespace CosmicCrowGames.Core
 
         bool _TweenStarted = false;
 
-        private bool m_mouseOverElement;
 
         public float Width {
             get{
@@ -87,11 +81,7 @@ namespace CosmicCrowGames.Core
                 }
             }        
             
-            //setup ID/unique colour
-            m_ElementID = m_NextId++;
-            UniqueColour = ColourHelpers.ColorFromID(m_ElementID);
-            GameWrapper.Main.MGUIInteractionMGR.OnMouseOver += mouseEnterListener;
-            GameWrapper.Main.MGUIInteractionMGR.OnMouseLeave += mouseLeaveListener;
+           
             
             
             AddComponent(new Renderer2D(_spritebatch));
@@ -113,12 +103,12 @@ namespace CosmicCrowGames.Core
             
         }
 
-        public GUIEntity(SpriteBatch spriteBatch) : base()
+        protected GUIEntity(SpriteBatch spriteBatch) : base()
         {
             _spritebatch = spriteBatch;
         }
 
-        public GUIEntity(Vector2 position, SpriteBatch spriteBatch) : base(position)
+        protected GUIEntity(Vector2 position, SpriteBatch spriteBatch) : base(position)
         {
             _spritebatch = spriteBatch;
         }
@@ -132,14 +122,7 @@ namespace CosmicCrowGames.Core
                 Height = GameWrapper.Main.GraphicsDevice.Viewport.Height;
             }
 
-            if (m_mouseOverElement)
-            {
-                if(MouseUserInput.IsLeftClicked){
-                    OnMouseButtonDown?.Invoke();
-                }else if(MouseUserInput.IsLeftJustReleased){
-                    OnMouseButtonUp?.Invoke();
-                }
-            }
+           
         }
 
         public override void Draw(GameTime gameTime)
@@ -189,24 +172,7 @@ namespace CosmicCrowGames.Core
             }
         }
 
-        private void mouseEnterListener(int id)
-        {
-            if (id != m_ElementID || m_mouseOverElement)
-                return;
-
-            m_mouseOverElement = true;
-            OnMouseEnter?.Invoke();
-        }
-
-        private void mouseLeaveListener(int id)
-        {
-            if (id != m_ElementID || !m_mouseOverElement)
-                return;
-
-            m_mouseOverElement = false;
-            OnMouseLeave?.Invoke();
-
-        }
+        
 
         public void DisableGUI(bool fade = true, float fadeTime = 0.2f)
         {
@@ -229,6 +195,11 @@ namespace CosmicCrowGames.Core
                 sprite2D.CurrentColour = Color.Transparent;
                 this.SetEnabled(false);
             }
+        }
+
+        public static GUIEntity NewInstance(Vector2 position, SpriteBatch spriteBatch)
+        {
+            return new GUIEntity(position, spriteBatch);
         }
 
         public static void OnSceneChanged()
