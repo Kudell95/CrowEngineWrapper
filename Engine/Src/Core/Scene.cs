@@ -43,8 +43,8 @@ namespace CosmicCrowGames.Core.Scenes
         public abstract void Initialize();
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
-
-        public Entity Instantiate(Entity entity)
+      
+        protected T Instantiate<T>(T entity) where T : Entity
         {
             EntityManager.AddEntity(entity);
             return entity;

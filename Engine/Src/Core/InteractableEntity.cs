@@ -39,7 +39,6 @@ public class InteractableEntity : Entity
          m_ElementID = m_NextId++;
          UniqueColour = ColourHelpers.ColorFromID(m_ElementID);
          GameWrapper.Main.MGUIInteractionMGR.Entities.TryAdd(m_ElementID, this);
-         GameWrapper.Main.MGUIInteractionMGR.LogEntities();
     }
 
     public override void Update(GameTime gameTime)

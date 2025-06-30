@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CrowEngine.Core.Managers;
 
+//surely we can come up with a better name than this!
 public class MouseGuiInteractionManager : Manager
 {
     public int CurrentHoveredGuiId = -1;
@@ -80,7 +81,7 @@ public class MouseGuiInteractionManager : Manager
     {
         if (Entities != null && Entities.ContainsKey(id))
         {
-            Entities[id].MouseEnterListener();
+            Entities[id]?.MouseEnterListener();
         }
     }
 
@@ -88,7 +89,7 @@ public class MouseGuiInteractionManager : Manager
     {
         if (Entities != null && Entities.ContainsKey(id))
         {
-            Entities[id].MouseLeaveListener();
+            Entities[id]?.MouseLeaveListener();
         }
     }
 
