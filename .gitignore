@@ -58,3 +58,11 @@ SampleGame/bin/Debug/net8.0/CrowEngine.pdb
 SampleGame/bin/Debug/net8.0/SampleGame.dll
 SampleGame/bin/Debug/net8.0/SampleGame.exe
 SampleGame/bin/Debug/net8.0/SampleGame.pdb
+Engine/Content/obj/DesktopGL/net6.0/Content/Images/Square.mgcontent
+Engine/Content/obj/DesktopGL/net6.0/Content/Images/book bg.mgcontent
+Engine/Content/obj/DesktopGL/net6.0/Content/.mgstats
+Engine/Content/obj/DesktopGL/net6.0/Content/.mgcontent
+Engine/Content/obj/DesktopGL/Images/Square.mgcontent
+Engine/Content/obj/DesktopGL/.mgstats
+Engine/Content/obj/DesktopGL/.mgcontent
+Engine/Content/bin/DesktopGL/Content/Images/book bg.xnb
