@@ -1,3 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"E:/Dev/Monogame/Projects/CrowEngine/Engine/Content/Images/book bg.png","E:/Dev/Monogame/Projects/CrowEngine/Engine/Content/bin/DesktopGL/Content/Images/book bg.xnb","TextureProcessor","Texture2DContent",2152,399101,0.140216
-"E:/Dev/Monogame/Projects/CrowEngine/Engine/Content/Images/Square.png","E:/Dev/Monogame/Projects/CrowEngine/Engine/Content/bin/DesktopGL/Content/Images/Square.xnb","TextureProcessor","Texture2DContent",1041,262229,0.0094511
+"H:/Dev/Monogame/Projects/Necromancer/CrowEngine/Engine/Content/Images/Square.png","H:/Dev/Monogame/Projects/Necromancer/CrowEngine/Engine/Content/bin/DesktopGL/Content/Images/Square.xnb","TextureProcessor","Texture2DContent",1041,262229,0.1159436

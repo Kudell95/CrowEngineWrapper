@@ -1,0 +1,2 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"E:/Dev/Monogame/Projects/CrowEngine/SampleGame/Content/Images/book bg.png","E:/Dev/Monogame/Projects/CrowEngine/SampleGame/Content/bin/DesktopGL/SampleGame/Images/book bg.xnb","TextureProcessor","Texture2DContent",2152,399101,0.1443697

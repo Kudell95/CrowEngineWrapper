@@ -46,6 +46,7 @@ namespace CosmicCrowGames.Core.Scenes
       
         protected T Instantiate<T>(T entity) where T : Entity
         {
+            
             EntityManager.AddEntity(entity);
             return entity;
         }

@@ -18,6 +18,7 @@ public class MouseGuiInteractionManager : Manager
     
     public Dictionary<int, InteractableEntity> Entities = new Dictionary<int, InteractableEntity>();
     
+    Color[] m_Pixel = new Color[1];
     
     public override void Initialize()
     {
@@ -25,7 +26,7 @@ public class MouseGuiInteractionManager : Manager
 
     public override void Draw(GameTime gameTime)
     {
-        base.Update(gameTime);
+        base.Draw(gameTime);
         
         int mx = Mouse.GetState().X;
         int my = Mouse.GetState().Y;
@@ -33,14 +34,13 @@ public class MouseGuiInteractionManager : Manager
         {
             m_currentMX = mx;
             m_currentMY = my;
-            Color[] pixel = new Color[1];
             //there is a coloured pixel below the mouse.
             try
             {
-                GameWrapper.Main.IDBuffer.GetData(0, new Rectangle(mx, my, 1, 1), pixel, 0, 1);
-                if (pixel != null && pixel.Length > 0)
+                GameWrapper.Main.IDBuffer.GetData(0, new Rectangle(mx, my, 1, 1), m_Pixel, 0, 1);
+                if (m_Pixel != null && m_Pixel.Length > 0)
                 {
-                    int id = ColourHelpers.IDFromColor(pixel[0]);
+                    int id = ColourHelpers.IDFromColor(m_Pixel[0]);
 
                     if (id != CurrentHoveredGuiId)
                     {
@@ -70,9 +70,7 @@ public class MouseGuiInteractionManager : Manager
                     NotifyOnMouseExit(CurrentHoveredGuiId);
                     CurrentHoveredGuiId = -1;
                 }
-            }
-            
-
+            } 
         }
 
     }

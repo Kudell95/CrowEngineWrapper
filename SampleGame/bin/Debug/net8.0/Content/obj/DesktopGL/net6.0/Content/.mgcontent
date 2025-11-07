@@ -4,11 +4,9 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/Dev/Monogame/Projects/CrowEngine/Engine/Content/Images/book bg.png</File>
     <File>E:/Dev/Monogame/Projects/CrowEngine/Engine/Content/Images/Square.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

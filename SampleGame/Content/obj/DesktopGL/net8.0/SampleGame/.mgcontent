@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>H:/Dev/Monogame/Projects/Necromancer/CrowEngine/Engine/Content/Images/Square.png</File>
+    <File>E:/Dev/Monogame/Projects/CrowEngine/SampleGame/Content/Images/book bg.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

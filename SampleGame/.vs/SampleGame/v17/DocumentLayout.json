@@ -3,23 +3,35 @@
   "WorkspaceRootPath": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{04BAED69-C74F-4A03-BAC6-BDB6C9F7B9A4}|..\\Engine\\CrowEngine.csproj|e:\\dev\\monogame\\projects\\crowengine\\engine\\crowengine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\scenes\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\scenes\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\samplegamescenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\samplegamescenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\samplegame.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:samplegame.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\scenes\\scenefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\scenes\\scenefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\scenes\\samplegamescenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\scenes\\samplegamescenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04BAED69-C74F-4A03-BAC6-BDB6C9F7B9A4}|..\\Engine\\CrowEngine.csproj|e:\\dev\\monogame\\projects\\crowengine\\engine\\crowengine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|e:\\dev\\monogame\\projects\\crowengine\\samplegame\\src\\util\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4CA8FBE-2791-4522-9029-9788C539E45C}|SampleGame.csproj|solutionrelative:src\\util\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,69 +41,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "SceneFactory.cs",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Scenes\\SceneFactory.cs",
+              "RelativeDocumentMoniker": "Src\\Scenes\\SceneFactory.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Scenes\\SceneFactory.cs",
+              "RelativeToolTip": "Src\\Scenes\\SceneFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBIAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T06:21:29.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Enums.cs",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Util\\Enums.cs",
+              "RelativeDocumentMoniker": "Src\\Util\\Enums.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Util\\Enums.cs",
+              "RelativeToolTip": "Src\\Util\\Enums.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T06:19:57.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SampleGame",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\SampleGame.csproj",
+              "RelativeDocumentMoniker": "SampleGame.csproj",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\SampleGame.csproj",
+              "RelativeToolTip": "SampleGame.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-18T06:10:09.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "CrowEngine.csproj",
               "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\Engine\\CrowEngine.csproj",
               "RelativeDocumentMoniker": "..\\Engine\\CrowEngine.csproj",
               "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\Engine\\CrowEngine.csproj",
               "RelativeToolTip": "..\\Engine\\CrowEngine.csproj",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACQAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-11-18T05:48:02.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "SampleGameSceneManager.cs",
-              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\SampleGameSceneManager.cs",
-              "RelativeDocumentMoniker": "Src\\SampleGameSceneManager.cs",
-              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\SampleGameSceneManager.cs",
-              "RelativeToolTip": "Src\\SampleGameSceneManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAhAAAA",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Scenes\\SampleGameSceneManager.cs",
+              "RelativeDocumentMoniker": "Src\\Scenes\\SampleGameSceneManager.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Scenes\\SampleGameSceneManager.cs",
+              "RelativeToolTip": "Src\\Scenes\\SampleGameSceneManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T05:26:04.532Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainMenuScene.cs",
-              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\MainMenuScene.cs",
-              "RelativeDocumentMoniker": "Src\\MainMenuScene.cs",
-              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\MainMenuScene.cs",
-              "RelativeToolTip": "Src\\MainMenuScene.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAmwFAAAAAUAAAA",
+              "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Scenes\\MainMenuScene.cs",
+              "RelativeDocumentMoniker": "Src\\Scenes\\MainMenuScene.cs",
+              "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Scenes\\MainMenuScene.cs",
+              "RelativeToolTip": "Src\\Scenes\\MainMenuScene.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAYwBUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T05:10:45.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Program.cs",
               "RelativeDocumentMoniker": "Src\\Program.cs",
               "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Program.cs",
               "RelativeToolTip": "Src\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAALAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T05:10:42.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Game1.cs",
               "DocumentMoniker": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Game1.cs",
               "RelativeDocumentMoniker": "Src\\Game1.cs",
               "ToolTip": "E:\\Dev\\Monogame\\Projects\\CrowEngine\\SampleGame\\Src\\Game1.cs",
               "RelativeToolTip": "Src\\Game1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAEAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T05:10:41.759Z",
               "EditorCaption": ""
