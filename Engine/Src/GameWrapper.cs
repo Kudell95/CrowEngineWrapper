@@ -30,6 +30,8 @@ public class GameWrapper : Game
 
     public ResolutionScaleManager ScreenScaleManager { get; private set; }
     public MouseGuiInteractionManager MGUIInteractionMGR { get; private set; }
+    
+    public AudioLibrary AudioLibrary { get; private set; }
 
     public Action OnDraw;
     public Action OnSceneChanged;
@@ -116,6 +118,9 @@ public class GameWrapper : Game
 
         MGUIInteractionMGR = new MouseGuiInteractionManager();
         MGUIInteractionMGR.Initialize();
+        
+        AudioLibrary = new AudioLibrary();
+        AudioLibrary.Initialize();
 
         //Cleanup Events
         OnSceneChanged += GUIEntity.OnSceneChanged;
