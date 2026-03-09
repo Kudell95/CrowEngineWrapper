@@ -20,7 +20,16 @@ namespace CosmicCrowGames.Core.Scenes
             _id = Guid.NewGuid();
         }
 
-        public Scene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(){
+        protected Scene(GraphicsDevice graphicsDevice) : base()
+        {
+            GraphicsDevice = graphicsDevice;
+            SpriteBatch = new SpriteBatch(graphicsDevice);
+            EntityManager = new EntityManager(SpriteBatch);
+        }
+
+        [Obsolete("Sprite batch has the potential to be null, see comment in constructor. Using the constructor that just takes the graphics device is preferred.")]
+        protected Scene(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base()
+        {
             GraphicsDevice = graphicsDevice;
             //FIXME: i have no fucking clue why, but passing the spritebatch through here causes the graphics device to be null.
             // So create the sprite batch fresh when loading scene.
