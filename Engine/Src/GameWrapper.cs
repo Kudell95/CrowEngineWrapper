@@ -31,6 +31,8 @@ public class GameWrapper : Game
     public ResolutionScaleManager ScreenScaleManager { get; private set; }
     public MouseGuiInteractionManager MGUIInteractionMGR { get; private set; }
     
+    public AudioManager AudioManager { get; private set; }
+    
     public AudioLibrary AudioLibrary { get; private set; }
 
     public Action OnDraw;
@@ -77,7 +79,7 @@ public class GameWrapper : Game
 
         rtl = new RichTextLayout{
             Font = _spriteFont,
-            Text = "Test",
+            Text = "",
         };
         
         _graphics = new GraphicsDeviceManager(this)
@@ -121,6 +123,9 @@ public class GameWrapper : Game
         
         AudioLibrary = new AudioLibrary();
         AudioLibrary.Initialize();
+        
+        AudioManager = new AudioManager();
+        AudioManager.Initialize();
 
         //Cleanup Events
         OnSceneChanged += GUIEntity.OnSceneChanged;
@@ -165,11 +170,12 @@ public class GameWrapper : Game
     ///DEBUG-------------------------------------------
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+#if DEBUG
          _frameCounter.Update(deltaTime);
 
         var fps = string.Format("FPS: /c[red]{0}", _frameCounter.AverageFramesPerSecond);
         rtl.Text = fps;
-
+#endif
         MainSpriteBatch.Begin();
         // // MainSpriteBatch.DrawString(_spriteFont, fps, new Vector2(1, 1), Color.Black);
         rtl.Draw(MainSpriteBatch, new Vector2(1,1), Color.Gray);

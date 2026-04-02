@@ -53,6 +53,8 @@ namespace CosmicCrowGames.Core
         
         public abstract void Draw(GameTime gameTime);
 
+        public abstract void LateUpdate(GameTime gameTime);
+
         public virtual void Destroy()
         {
             Enabled = false;

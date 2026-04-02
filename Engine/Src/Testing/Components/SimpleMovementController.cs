@@ -21,6 +21,11 @@ namespace UntitledCardGame.Components{
            
         }
 
+        public override void LateUpdate(GameTime gameTime)
+        {
+            
+        }
+
         public override void Initialize()
         {
            

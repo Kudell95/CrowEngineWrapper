@@ -31,6 +31,11 @@ namespace CosmicCrowGames.Core.Components
             
         }
 
+        public override void LateUpdate(GameTime gameTime)
+        {
+            
+        }
+
         public override void Initialize()
         {
             Entity.transform.Position = GetAnchoredPosition(LocalPosition);

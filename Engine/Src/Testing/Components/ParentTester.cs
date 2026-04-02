@@ -14,6 +14,11 @@ namespace UntitledCardGame.Components{
             // throw new System.NotImplementedException();
         }
 
+        public override void LateUpdate(GameTime gameTime)
+        {
+            
+        }
+
         public override void Initialize()
         {
             // throw new System.NotImplementedException();

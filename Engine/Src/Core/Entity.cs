@@ -20,6 +20,7 @@ public abstract class Entity
     private Action onInitialise;
     private Action<GameTime> onDraw;
     private Action<GameTime> onUpdate;
+    private Action<GameTime> onLateUpdate;
     public static Action<Entity> onEntityCreated;
     private bool _active = true;
     private Guid _id;
@@ -77,6 +78,14 @@ public abstract class Entity
 
         onUpdate?.Invoke(gameTime);
     }
+    public virtual void LateUpdate(GameTime gameTime)
+    {
+        if(!Active)
+            return;
+
+        onLateUpdate?.Invoke(gameTime);
+    }
+    
     public virtual void Draw(GameTime gameTime){
         if(!Active)
             return;
@@ -138,6 +147,7 @@ public abstract class Entity
         onInitialise += component.Initialize;
         onUpdate += component.Update;
         onDraw += component.Draw;
+        onLateUpdate += component.LateUpdate;
 
 
         component.OnDisabled += OnComponentDisabled;
@@ -167,9 +177,11 @@ public abstract class Entity
             onInitialise -= component.Initialize;
             onUpdate -= component.Update;
             onDraw -= component.Draw;
+            onLateUpdate -= component.LateUpdate;
             onInitialise += component.Initialize;
             onUpdate += component.Update;
             onDraw += component.Draw;
+            onLateUpdate -= component.LateUpdate;
         }catch{}
     }
 
@@ -179,6 +191,7 @@ public abstract class Entity
             onInitialise -= component.Initialize;
             onUpdate -= component.Update;
             onDraw -= component.Draw;
+            onLateUpdate -= component.LateUpdate;
         }catch{}
     }
 
@@ -192,6 +205,8 @@ public abstract class Entity
         onUpdate -= component.Update;
 
         onDraw -= component.Draw;
+
+        onLateUpdate -= component.LateUpdate;
 
         return this;
     }
@@ -283,6 +298,7 @@ public abstract class Entity
                 onDraw -= component.Draw;
                 onUpdate -= component.Update;
                 onInitialise -= component.Initialize;
+                onLateUpdate -= component.LateUpdate;
 
                 component.Destroy();
             }

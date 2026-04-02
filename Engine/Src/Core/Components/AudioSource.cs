@@ -13,6 +13,11 @@ public class AudioSource : Component
 
     }
 
+    public override void LateUpdate(GameTime gameTime)
+    {
+        
+    }
+
     public override void Initialize()
     {
         

@@ -1,5 +1,7 @@
 
 using System;
+using CrowEngine.Core.Data;
+using CrowEngine.Core.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,7 +13,8 @@ namespace CosmicCrowGames.Core.Scenes
         public SpriteBatch SpriteBatch;
         public EntityManager EntityManager;
         public GraphicsDevice GraphicsDevice;
-
+        public CollisionManager CollisionManager;
+        
 
         private Guid _id;
         public string ID {get { return _id.ToString(); } }
@@ -25,6 +28,8 @@ namespace CosmicCrowGames.Core.Scenes
             GraphicsDevice = graphicsDevice;
             SpriteBatch = new SpriteBatch(graphicsDevice);
             EntityManager = new EntityManager(SpriteBatch);
+            CollisionManager = new CollisionManager(graphicsDevice);
+
         }
 
         [Obsolete("Sprite batch has the potential to be null, see comment in constructor. Using the constructor that just takes the graphics device is preferred.")]
@@ -43,9 +48,11 @@ namespace CosmicCrowGames.Core.Scenes
         public virtual void OnSceneUnloaded()
         {
             EntityManager.OnDestroy();
-            EntityManager.Dispose();
+            
             EntityManager = null;
             SpriteBatch.Dispose();
+            CollisionManager.Dispose();
+            CollisionManager = null;
         }
 
 
@@ -55,10 +62,12 @@ namespace CosmicCrowGames.Core.Scenes
       
         protected T Instantiate<T>(T entity) where T : Entity
         {
-            
             EntityManager.AddEntity(entity);
             return entity;
         }
+
+        
+        
 
 
     }

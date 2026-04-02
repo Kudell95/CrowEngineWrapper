@@ -55,6 +55,11 @@ namespace CosmicCrowGames.Core.Components.UI
             Entity.GetComponent<Renderer2D>().RenderItem(rtl,GetPosition(), TextColour);
         }
 
+        public override void LateUpdate(GameTime gameTime)
+        {
+            
+        }
+
         public override void Initialize()
         {
             SetFont(_fontName);

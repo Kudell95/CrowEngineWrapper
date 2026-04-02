@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using CrowEngine.Core.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -53,6 +54,7 @@ namespace CosmicCrowGames.Core.Scenes
         public virtual void Update(GameTime gameTime){
             CurrentScene?.Update(gameTime);
             CurrentScene?.EntityManager?.Update(gameTime);
+            CollisionManager.OnUpdateColliders?.Invoke(CurrentScene?.EntityManager?.GetCollideableEntities());
         }
 
         public virtual void Draw(GameTime gameTime){
